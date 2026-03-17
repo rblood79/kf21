@@ -13182,24 +13182,16 @@
                   "alignItems": "center",
                   "children": [
                     {
-                      "type": "text",
-                      "id": "jlsDt",
-                      "name": "r4",
-                      "fill": "#38BDF8",
-                      "content": "LOGO",
-                      "fontFamily": "Inter",
-                      "fontSize": 12,
-                      "fontWeight": "700"
-                    },
-                    {
-                      "type": "text",
-                      "id": "DrO2C",
-                      "name": "LOGO",
-                      "fill": "#E8ECFF",
-                      "content": "KF-21 LIS",
-                      "fontFamily": "Noto Sans",
-                      "fontSize": 18,
-                      "fontWeight": "600"
+                      "type": "rectangle",
+                      "id": "QPsYS",
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "kf21LIS (1).png",
+                        "mode": "fill"
+                      },
+                      "width": 106,
+                      "height": 20
                     }
                   ]
                 },
@@ -16801,24 +16793,16 @@
                   "alignItems": "center",
                   "children": [
                     {
-                      "type": "text",
-                      "id": "E5uBT",
-                      "name": "r5",
-                      "fill": "#4A7C59",
-                      "content": "LOGO",
-                      "fontFamily": "Inter",
-                      "fontSize": 12,
-                      "fontWeight": "700"
-                    },
-                    {
-                      "type": "text",
-                      "id": "XDXM4",
-                      "name": "LOGO",
-                      "fill": "#1A1A2E",
-                      "content": "KF-21 LIS",
-                      "fontFamily": "Noto Sans",
-                      "fontSize": 18,
-                      "fontWeight": "600"
+                      "type": "rectangle",
+                      "id": "OAtKx",
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "kf21LIS-1.png",
+                        "mode": "fill"
+                      },
+                      "width": 106,
+                      "height": 20
                     }
                   ]
                 },
