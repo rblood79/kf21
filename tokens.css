@@ -71,6 +71,11 @@
   /* ── Colors / Semantic (info block) ── */
   --color-semantic-info-bg : #DFDFE6;
 
+  /* ── Colors / Surface states (hover / input / subtle divider) ── */
+  --color-bg-hover       : #EDECEA;   /* surface hover (card, tag, item) */
+  --color-bg-input       : #F0F2F7;   /* input/search/tab/badge neutral bg */
+  --color-border-subtle  : #F4F4F5;   /* list item subtle divider */
+
   /* ── Card fill gradient ── */
   --gradient-card        : linear-gradient(180deg, #FFFFFF 0%, #FFFFFF 70%, #ECEEF3 100%);
 
@@ -131,23 +136,25 @@
 @media (prefers-color-scheme: dark) {
   :root {
     /* Background */
-    --color-bg-page        : #0A0F1A;
-    --color-bg-card        : #131B2E;
-    --color-bg-white       : #0D1525;
-    --color-bg-surface     : #16213A;
+    --color-bg-page        : #0A0F1C;
+    --color-bg-card        : #201E24;
+    --color-bg-white       : #201E24;
+    --color-bg-surface     : #151A28;
+    --color-bg-unit-card   : #1E293B;   /* unit / person card surface */
 
     /* Text */
     --color-text-primary   : #E8ECFF;
-    --color-text-secondary : #B0B8D0;
-    --color-text-muted     : #7A85A0;
-    --color-text-tertiary  : #5A6580;
-    --color-text-dim       : #8A909E;
+    --color-text-secondary : #D7D7D7;
+    --color-text-muted     : #8A94B0;
+    --color-text-tertiary  : #9AA5BE;
+    --color-text-dim       : #8A94B0;
 
     /* Border */
     --color-border-light   : #2A3555;
     --color-border-card    : #2A3555;
-    --color-border-divider : #2A3555;
+    --color-border-divider : #253050;   /* tab / badge divider */
     --color-border-surface : #2A3555;
+    --color-border-medium  : #253050;   /* medium-weight divider */
 
     /* Status */
     --color-success        : #34D399;
@@ -161,8 +168,13 @@
     --color-accent-orange  : #F59E0B;
     --color-accent-teal    : #2DD4BF;
 
+    /* Surface states */
+    --color-bg-hover       : #2A3555;
+    --color-bg-input       : #253050;
+    --color-border-subtle  : #0A0F1C;
+
     /* Card gradient */
-    --gradient-card        : linear-gradient(180deg, #0D1525 0%, #0D1525 70%, #131B2E 100%);
+    --gradient-card        : linear-gradient(180deg, #201E24 0%, #201E24 70%, #151A28 100%);
 
     /* Semantic info bg */
     --color-semantic-info-bg : #222229;
@@ -174,19 +186,21 @@
    Usage: <html data-theme="dark"> or <div data-theme="dark">
 ═══════════════════════════════════════════════ */
 [data-theme="dark"] {
-  --color-bg-page        : #0A0F1A;
-  --color-bg-card        : #131B2E;
-  --color-bg-white       : #0D1525;
-  --color-bg-surface     : #16213A;
+  --color-bg-page        : #0A0F1C;
+  --color-bg-card        : #201E24;
+  --color-bg-white       : #201E24;
+  --color-bg-surface     : #151A28;
+  --color-bg-unit-card   : #1E293B;
   --color-text-primary   : #E8ECFF;
-  --color-text-secondary : #B0B8D0;
-  --color-text-muted     : #7A85A0;
-  --color-text-tertiary  : #5A6580;
-  --color-text-dim       : #8A909E;
+  --color-text-secondary : #D7D7D7;
+  --color-text-muted     : #8A94B0;
+  --color-text-tertiary  : #9AA5BE;
+  --color-text-dim       : #8A94B0;
   --color-border-light   : #2A3555;
   --color-border-card    : #2A3555;
-  --color-border-divider : #2A3555;
+  --color-border-divider : #253050;
   --color-border-surface : #2A3555;
+  --color-border-medium  : #253050;
   --color-success        : #34D399;
   --color-success-dim    : rgba(52, 211, 153, 0.12);
   --color-error          : #EF4444;
@@ -195,8 +209,11 @@
   --color-info-foreground: #B2B2FF;
   --color-accent-orange  : #F59E0B;
   --color-accent-teal    : #2DD4BF;
+  --color-bg-hover       : #2A3555;
+  --color-bg-input       : #253050;
+  --color-border-subtle  : #0A0F1C;
   --color-semantic-info-bg : #222229;
-  --gradient-card        : linear-gradient(180deg, #0D1525 0%, #0D1525 70%, #131B2E 100%);
+  --gradient-card        : linear-gradient(180deg, #201E24 0%, #201E24 70%, #151A28 100%);
 }
 
 [data-theme="light"] {
@@ -221,6 +238,9 @@
   --color-info-foreground: #000066;
   --color-accent-orange  : #E89B5C;
   --color-accent-teal    : #6BB6B0;
+  --color-bg-hover       : #EDECEA;
+  --color-bg-input       : #F0F2F7;
+  --color-border-subtle  : #F4F4F5;
   --color-semantic-info-bg : #DFDFE6;
   --gradient-card        : linear-gradient(180deg, #FFFFFF 0%, #FFFFFF 70%, #ECEEF3 100%);
 }

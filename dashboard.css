@@ -30,7 +30,7 @@ body {
   width: 1920px;
   min-height: 1446px;
   background: var(--color-bg-page);
-  border: 1px solid #000;
+  border: 1px solid var(--color-border-card);
   padding: var(--sp-2xl);
   display: flex;
   flex-direction: column;
@@ -53,7 +53,7 @@ body {
   font-family: var(--ff-base);
   transition: background .15s;
 }
-.unit-card:hover { background: #EDECEA; }
+.unit-card:hover { background: var(--color-bg-hover); }
 .unit-card__label { font-size: 12px; font-weight: 600; color: var(--color-text-dim); letter-spacing: 1px; }
 .unit-card__value { font-size: 16px; font-weight: 700; color: var(--color-text-dim); }
 .unit-card__unit  { font-size: 16px; font-weight: 700; color: #C0392B; }
@@ -126,7 +126,7 @@ body {
   display: flex; flex-direction: column; gap: 14px;
   flex-shrink: 0;
 }
-.todo-badge { background: #F0F2F7; color: var(--color-success); }
+.todo-badge { background: var(--color-bg-input); color: var(--color-success); }
 .todo-list  { display: flex; flex-direction: column; gap: 16px; width: 100%; }
 .todo-item  { display: flex; align-items: center; gap: 10px; width: 100%; }
 .cb-done {
@@ -161,13 +161,13 @@ body {
   display: flex; flex-direction: column; gap: 4px;
   transition: background .15s;
 }
-.mini-card:hover { background: #EDECEA; }
+.mini-card:hover { background: var(--color-bg-hover); }
 .mini-label { font-size: 14px; font-weight: 600; color: var(--color-text-dim); letter-spacing: 1px; }
 .mini-gauge { width: 100%; height: 52px; position: relative; }
 .mini-gauge svg { position: absolute; left: 50%; transform: translateX(-50%); }
 .mini-gauge-val {
   position: absolute; top: 30px; left: 50%; transform: translateX(-50%);
-  font-size: 12px; font-weight: 700; color: #222; white-space: nowrap;
+  font-size: 12px; font-weight: 700; color: var(--color-text-primary); white-space: nowrap;
 }
 
 /* ── DowntimeBarCard (VZcr4 / uOaU7) 298.5 × 265 ── */
@@ -199,7 +199,7 @@ body {
 }
 .period-tabs {
   display: flex; gap: 2px;
-  background: #F0F2F7; border-radius: var(--r-md); padding: 2px;
+  background: var(--color-bg-input); border-radius: var(--r-md); padding: 2px;
 }
 .period-tab {
   border-radius: var(--r-sm);
@@ -214,7 +214,7 @@ body {
 .line-legend { display: flex; align-items: center; gap: 16px; }
 .legend-item { display: flex; align-items: center; gap: 6px; }
 .legend-line { width: 16px; height: 2px; border-radius: 1px; }
-.legend-txt  { font-size: 16px; color: #555; }
+.legend-txt  { font-size: 16px; color: var(--color-text-muted); }
 
 /* ── LineAreaCard (3LkBB / Fr1iL) 298.5 × 265 ── */
 .linearea-card {
@@ -261,7 +261,7 @@ body {
 .tech-list { display: flex; flex-direction: column; flex: 1; overflow: hidden; }
 .tech-item {
   display: flex; align-items: flex-start; gap: 16px;
-  padding: 14px 0; border-bottom: 1px solid #F4F4F5;
+  padding: 14px 0; border-bottom: 1px solid var(--color-border-subtle);
   transition: background .15s;
 }
 .tech-item:last-child { border-bottom: none; }
@@ -271,8 +271,8 @@ body {
   display: flex; align-items: center; justify-content: center;
 }
 .tech-content   { display: flex; flex-direction: column; gap: 2px; flex: 1; min-width: 0; }
-.tech-title     { font-size: 14px; font-weight: 600; color: #555; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.tech-meta      { font-size: 12px; color: #767676; font-family: var(--ff-mono); }
+.tech-title     { font-size: 14px; font-weight: 600; color: var(--color-text-secondary); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tech-meta      { font-size: 12px; color: var(--color-text-dim); font-family: var(--ff-mono); }
 
 /* ── InventoryCard / 작업장 재고 (RubnX) flex × 546 ── */
 .inventory-card {
@@ -319,12 +319,12 @@ body {
 .shortcut-btn  {
   flex: 1; border-radius: var(--r-xl);
   background: var(--color-bg-surface);
-  border: 1px solid #e7e6e4;
+  border: 1px solid rgba(0,0,0,.08);
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   gap: 4px; padding: 8px; cursor: pointer;
   transition: background .15s, box-shadow .15s, transform .1s;
 }
-.shortcut-btn:hover  { background: #EDECEA; box-shadow: 0 2px 8px rgba(0,0,0,.08); transform: scale(1.02); }
+.shortcut-btn:hover  { background: var(--color-bg-hover); box-shadow: 0 2px 8px rgba(0,0,0,.08); transform: scale(1.02); }
 .shortcut-btn:active { transform: scale(.98); }
 .shortcut-btn:focus-visible { outline: 2px solid var(--color-success); outline-offset: 2px; }
 .shortcut-btn-title  { font-size: 14px; font-weight: 700; color: var(--color-text-primary); }
@@ -344,7 +344,7 @@ body {
   display: flex; align-items: center; justify-content: center;
   transition: background .15s;
 }
-.cal-nav button:hover { background: #F0F2F7; }
+.cal-nav button:hover { background: var(--color-bg-input); }
 .time-row {
   display: flex; align-items: center; justify-content: center; gap: 4px;
   font-weight: 700; font-size: 28px;
@@ -396,7 +396,7 @@ body {
 .bar-legend { display: flex; align-items: center; gap: 12px; }
 .bar-leg-item { display: flex; align-items: center; gap: 5px; }
 .bar-leg-dot  { width: 8px; height: 8px; border-radius: 2px; flex-shrink: 0; }
-.bar-leg-txt  { font-size: 12px; color: #555; }
+.bar-leg-txt  { font-size: 12px; color: var(--color-text-muted); }
 
 /* ══════════════════════════════════════════════
    ROW 3 — Person Search cards
@@ -417,12 +417,12 @@ body {
 .search-box   {
   flex: 1; display: flex; align-items: center; gap: 6px;
   height: 32px; padding: 0 10px;
-  border-radius: var(--r-md); background: #F0F2F7;
+  border-radius: var(--r-md); background: var(--color-bg-input);
   border: 1px solid rgba(0,0,0,.16);
   transition: border-color .15s, background .15s;
 }
-.search-box:focus-within { border-color: var(--color-accent-blue); background: #fff; }
-.search-placeholder { font-size: 14px; font-weight: 500; color: #717171; }
+.search-box:focus-within { border-color: var(--color-accent-blue); background: var(--color-bg-white); }
+.search-placeholder { font-size: 14px; font-weight: 500; color: var(--color-text-tertiary); }
 .filter-btn {
   display: flex; align-items: center; gap: 4px;
   height: 32px; padding: 0 12px;
@@ -497,3 +497,76 @@ body {
 }
 .fav-tag:hover { background: #dddad3; }
 .fav-tag span  { font-size: 12px; font-weight: 600; color: var(--color-text-secondary); }
+
+/* ══════════════════════════════════════════════
+   DARK MODE — dashboard 전용 오버라이드
+   ──────────────────────────────────────────────
+   tokens.css 의 CSS 변수는 [data-theme="dark"] 에서 자동 전환되므로,
+   light 규칙이 토큰을 참조하면 다크 오버라이드 없이 자동 적용됩니다.
+   아래 규칙은 다음 2가지 경우에만 남깁니다:
+     1. 다크에서 토큰 자동값과 다른 특정 색을 원하는 경우 (디자인 의도)
+     2. light 규칙이 토큰 불가능한 하드코딩 값(#fff, rgba, 투명 등)을 쓰는 경우
+══════════════════════════════════════════════ */
+
+/* ── Unit strip: 다크에서 divider-medium 계열 border 원함 ── */
+[data-theme="dark"] .unit-card        { border-color: var(--color-border-divider); }
+[data-theme="dark"] .unit-card:hover  { background: var(--color-bg-unit-card); }
+[data-theme="dark"] .unit-card__value { color: var(--color-text-secondary); }
+[data-theme="dark"] .unit-card__unit  { color: var(--color-error); }
+
+/* ── Gauge: 다크에서 info 계열 강조 ── */
+[data-theme="dark"] .gc2-val          { color: var(--color-info); }
+[data-theme="dark"] .progress-track   { background: var(--color-bg-input); }
+
+/* ── Todo: 다크 성공색은 밝은 mint 유지 ── */
+[data-theme="dark"] .todo-badge       { color: var(--color-mc); }
+[data-theme="dark"] .todo-text-done   { color: #5A6580; }
+
+/* ── Mini card: 카드 내부 서브 서페이스는 input bg 사용 ── */
+[data-theme="dark"] .mini-card        { background: var(--color-bg-input); }
+
+/* ── Summary text: secondary 대신 tertiary 톤 ── */
+[data-theme="dark"] .summary-text     { color: var(--color-text-tertiary); }
+
+/* ── Period tabs: 활성 탭은 라이트 톤 success 유지 ── */
+[data-theme="dark"] .period-tab       { color: var(--color-text-muted); }
+[data-theme="dark"] .period-tab.active { background: #4A7C59; color: #fff; }
+
+/* ── Tech: border-subtle 이 이미 자동 전환되지만 명시 유지 불필요 ── */
+/* (border-subtle 토큰 + tech-title/tech-meta 토큰 사용 → 자동 전환) */
+
+/* ── Inventory: secondary 대신 tertiary/muted ── */
+[data-theme="dark"] .inv-sub-label    { color: var(--color-text-tertiary); }
+[data-theme="dark"] .inv-leg-txt      { color: var(--color-text-muted); }
+
+/* ── Shortcut: 카드 내부 서브 서페이스는 input bg ── */
+[data-theme="dark"] .shortcut-btn         { background: var(--color-bg-input); border-color: var(--color-border-card); }
+[data-theme="dark"] .shortcut-btn:hover   { box-shadow: 0 2px 8px rgba(0,0,0,.3); }
+[data-theme="dark"] .shortcut-btn-sub     { color: var(--color-text-muted); }
+
+/* ── Calendar: 다크 성공색은 밝은 mint 대신 라이트 톤 유지 ── */
+[data-theme="dark"] .cal-nav button       { color: var(--color-text-muted); }
+[data-theme="dark"] .time-sep             { color: var(--color-text-muted); }
+[data-theme="dark"] .time-s               { color: #4A7C59; }
+[data-theme="dark"] .cal-day              { color: var(--color-text-secondary); }
+[data-theme="dark"] .cal-day.empty        { color: #5A6580; }
+[data-theme="dark"] .day-header span      { color: #5A6580; }
+
+/* ── Person / search: 다크 전용 커스텀 서페이스 ── */
+[data-theme="dark"] .person-card          { border-top-color: #2F3A4F; }
+[data-theme="dark"] .search-box           { background: #1F2937; border-color: #3B475E; }
+[data-theme="dark"] .filter-btn           { background: #334155; border-color: var(--color-border-card); }
+[data-theme="dark"] .photo-frame,
+[data-theme="dark"] .photo-frame--blue,
+[data-theme="dark"] .photo-frame--orange  { background: #111827; }
+[data-theme="dark"] .photo-frame--blue    { border-color: var(--color-info); }
+[data-theme="dark"] .photo-frame--orange  { border-color: var(--color-warning); }
+[data-theme="dark"] .rank-badge--blue     { background: #1E3A5F; color: var(--color-text-primary); }
+[data-theme="dark"] .rank-badge--orange   { background: #92400E; color: #FDE68A; }
+[data-theme="dark"] .person-role          { color: var(--color-text-muted); }
+[data-theme="dark"] .info-icon-wrap       { background: var(--color-bg-input); }
+[data-theme="dark"] .info-label           { color: var(--color-text-muted); }
+
+/* ── Fav tags: 카드 내부 서브 서페이스는 input bg ── */
+[data-theme="dark"] .fav-title            { color: var(--color-text-muted); }
+[data-theme="dark"] .fav-tag              { background: var(--color-bg-input); }

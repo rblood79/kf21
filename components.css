@@ -18,7 +18,7 @@
 .lightboard {
   width: 1920px;
   height: 1200px;
-  background: #f4f4f5;
+  background: var(--color-bg-page);
   position: relative;
   font-family: var(--ff-base);
   overflow: hidden;
@@ -72,7 +72,7 @@
   font-size: 14px;
   font-weight: 600;
   letter-spacing: 2px;
-  color: #767676;
+  color: var(--color-text-dim);
   cursor: pointer;
   transition: color .15s;
   white-space: nowrap;
@@ -80,8 +80,8 @@
   font-family: var(--ff-base);
 }
 .topbar__tab--active {
-  background: #FFFFFF;
-  color: #1A1A2E;
+  background: var(--color-bg-white);
+  color: var(--color-text-primary);
   font-weight: 700;
 }
 .topbar__tab--menu-icon {
@@ -156,14 +156,14 @@
   position: absolute;
   left: 0; bottom: 0;
   width: 820px; height: 1px;
-  background: #E0E3EB;
+  background: var(--color-border-divider);
   pointer-events: none;
 }
 .topbar__border-right {
   position: absolute;
   right: 0; bottom: 0;
   width: 1008px; height: 1px;
-  background: #E0E3EB;
+  background: var(--color-border-divider);
   pointer-events: none;
 }
 .topbar__tab-border-l {
@@ -198,7 +198,7 @@
 ══════════════════════════════════════════════ */
 .card__badge--live    { background: rgba(74,124,89,.125); color: #34D399; }
 .card__badge--more    { background: #E8E4DC; color: #555555; }
-.card__badge--period  { background: #F0F2F7; color: #555566; }
+.card__badge--period  { background: #F0F2F7; color: var(--color-text-secondary); }
 
 /* ══════════════════════════════════════════════
    LEFT PANEL  (299px)
@@ -272,8 +272,8 @@
   justify-content: space-between;
   width: 180px;
 }
-.gc2-label { font-size: 14px; font-weight: 700; color: #8b8b8b; }
-.gc2-val   { font-size: 21px; font-weight: 700; color: #4a7ba8; }
+.gc2-label { font-size: 14px; font-weight: 700; color: var(--color-text-dim); }
+.gc2-val   { font-size: 21px; font-weight: 700; color: var(--color-accent-blue); }
 .gc2-track {
   position: relative;
   width: 180px; height: 6px;
@@ -282,14 +282,14 @@
   position: absolute;
   left: 0; top: 0;
   width: 180px; height: 6px;
-  background: #E8E4DC;
+  background: var(--color-bg-card);
   border-radius: 3px;
 }
 .gc2-fg {
   position: absolute;
   left: 0; top: 0;
   height: 6px;
-  background: #6BB6B0;
+  background: var(--color-accent-teal);
   border-radius: 3px;
 }
 
@@ -310,7 +310,7 @@
 .inv-sub-label {
   font-size: 13px;
   font-weight: 700;
-  color: #555566;
+  color: var(--color-text-secondary);
   letter-spacing: 1px;
 }
 .inv-legend {
@@ -328,7 +328,7 @@
   width: 8px; height: 8px;
   border-radius: 2px;
 }
-.inv-leg-txt { font-size: 11px; color: #555566; }
+.inv-leg-txt { font-size: 11px; color: var(--color-text-secondary); }
 .inv-bar-chart {
   display: flex;
   align-items: flex-end;
@@ -362,8 +362,8 @@
   align-items: center;
   gap: 6px;
 }
-.inv-pie-leg-txt { font-size: 14px; color: #555566; }
-.inv-pie-leg-val { font-size: 14px; font-weight: 700; color: #555566; }
+.inv-pie-leg-txt { font-size: 14px; color: var(--color-text-secondary); }
+.inv-pie-leg-val { font-size: 14px; font-weight: 700; color: var(--color-text-secondary); }
 
 /* ── Shortcut Card (바로가기, 265px) ── */
 .shortcut-card {
@@ -393,15 +393,15 @@
   gap: 4px;
   flex: 1;
   border-radius: 12px;
-  background: #f5f4f1;
-  border: 1px solid #e7e6e4;
+  background: var(--color-bg-surface);
+  border: 1px solid rgba(0,0,0,.08);
   cursor: pointer;
   transition: background .15s, box-shadow .15s, transform .1s;
   padding: 8px;
   font-family: var(--ff-base);
 }
 .shortcut-btn:hover {
-  background: #eeedea;
+  background: var(--color-bg-hover);
   box-shadow: 0 2px 8px rgba(0,0,0,.1);
   transform: scale(1.02);
 }
@@ -413,12 +413,12 @@
 .shortcut-btn__title {
   font-size: 14px;
   font-weight: 700;
-  color: #1A1A2E;
+  color: var(--color-text-primary);
 }
 .shortcut-btn__sub {
   font-size: 14px;
   font-weight: 400;
-  color: #888899;
+  color: var(--color-text-tertiary);
 }
 
 /* ══════════════════════════════════════════════
@@ -604,7 +604,7 @@
 .mini-card {
   flex: 1;
   border-radius: 8px;
-  background: #F5F4F1;
+  background: var(--color-bg-surface);
   border: 1px solid rgba(0,0,0,.08);
   padding: 10px;
   display: flex;
@@ -612,11 +612,11 @@
   gap: 4px;
   transition: background .15s;
 }
-.mini-card:hover { background: #EEECEA; }
+.mini-card:hover { background: var(--color-bg-hover); }
 .mini-card__label {
   font-size: 14px;
   font-weight: 600;
-  color: #767676;
+  color: var(--color-text-dim);
   letter-spacing: 1px;
 }
 .mini-gauge-area {
@@ -631,7 +631,7 @@
   text-align: center;
   font-size: 12px;
   font-weight: 700;
-  color: #222222;
+  color: var(--color-text-primary);
 }
 
 /* ── 불가동 현황 Card (265px) ── */
@@ -650,8 +650,8 @@
   gap: 6px;
   width: 100%;
 }
-.dt-summary-txt { font-size: 16px; font-weight: 400; color: #555566; }
-.dt-summary-val { font-size: 18px; font-weight: 700; color: #1A1A2E; }
+.dt-summary-txt { font-size: 16px; font-weight: 400; color: var(--color-text-secondary); }
+.dt-summary-val { font-size: 18px; font-weight: 700; color: var(--color-text-primary); }
 .dt-bar-area {
   display: flex;
   align-items: flex-end;
@@ -689,7 +689,7 @@
   gap: 16px;
   padding: 16px 0;
   width: 100%;
-  border-bottom: 1px solid #F4F4F5;
+  border-bottom: 1px solid var(--color-border-subtle);
   transition: background .15s;
 }
 .tech-item:last-child { border-bottom: none; }
@@ -710,11 +710,11 @@
   flex: 1; min-width: 0;
 }
 .tech-title {
-  font-size: 14px; font-weight: 600; color: #555555;
+  font-size: 14px; font-weight: 600; color: var(--color-text-secondary);
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
-.tech-title--pending { color: #767676; }
-.tech-meta { font-family: var(--ff-mono); font-size: 12px; color: #767676; }
+.tech-title--pending { color: var(--color-text-dim); }
+.tech-meta { font-family: var(--ff-mono); font-size: 12px; color: var(--color-text-dim); }
 .tech-meta--in-progress { font-weight: 500; color: #71717A; }
 
 /* ══════════════════════════════════════════════
@@ -738,14 +738,14 @@
   font-family: var(--ff-base);
   font-size: 14px; font-weight: 600;
   letter-spacing: 2px;
-  color: #767676;
+  color: var(--color-text-dim);
   cursor: pointer;
   position: relative;
   transition: color .15s;
 }
-.bottombar__tab--right-border { border-right: 1px solid #E0E3EB; }
+.bottombar__tab--right-border { border-right: 1px solid var(--color-border-divider); }
 .bottombar__tab--active {
-  color: #1A1A2E;
+  color: var(--color-text-primary);
   font-weight: 700;
 }
 .bottombar__tab--active::after {
@@ -753,9 +753,9 @@
   position: absolute;
   bottom: 0; left: 0;
   width: 100%; height: 2px;
-  background: #4A7C59;
+  background: var(--color-success);
 }
-.bottombar__tab:hover { color: #1A1A2E; }
+.bottombar__tab:hover { color: var(--color-text-primary); }
 
 /* ══════════════════════════════════════════════
    SUBMENU POPOVER
@@ -802,31 +802,58 @@
 .submenu-badge__txt { font-size: 10px; font-weight: 700; color: #1D4ED8; }
 
 /* ══════════════════════════════════════════════
-   DARK MODE (lightboard 전용 오버라이드)
+   DARK MODE — lightboard 전용 오버라이드
+   ──────────────────────────────────────────────
+   tokens.css 의 CSS 변수는 [data-theme="dark"] 에서 자동 전환됩니다.
+   아래는 다음 경우에만 남깁니다:
+     1. 다크에서 토큰 자동값과 다른 특정 색을 원하는 경우 (디자인 의도)
+     2. light 규칙이 토큰 불가능한 하드코딩 값(#fff, rgba, 투명 등)을 쓰는 경우
 ══════════════════════════════════════════════ */
-[data-theme="dark"] .lightboard { background: #0A0F1A; }
+
+/* ── Shells: 다크에서는 surface 톤으로 내려감 ── */
 [data-theme="dark"] .topbar,
-[data-theme="dark"] .bottombar  { background: #131B2E; border-color: #2A3555; }
-[data-theme="dark"] .hud-card-body {
-  background: linear-gradient(180deg, #0D1525 0%, #0D1525 70%, #131B2E 100%);
-  border-color: #2A3555;
-}
-[data-theme="dark"] .topbar__tab   { color: #7A85A0; }
-[data-theme="dark"] .topbar__tab--active { color: #E8ECFF; background: #131B2E; }
-[data-theme="dark"] .bottombar__tab { color: #7A85A0; }
-[data-theme="dark"] .bottombar__tab--active { color: #E8ECFF; }
-[data-theme="dark"] .submenu-popover { background: #131B2E; border-color: #2A3555; }
-[data-theme="dark"] .submenu-item__txt { color: #B0B8D0; }
-[data-theme="dark"] .submenu-item--active { background: #1A2340; }
-[data-theme="dark"] .mini-card  { background: #1A2340; border-color: #2A3555; }
-[data-theme="dark"] .unit-card-item { background: #131B2E; border-color: #2A3555; }
-[data-theme="dark"] .unit-card-item__lbl,
-[data-theme="dark"] .unit-card-item__num { color: #B0B8D0; }
-[data-theme="dark"] .shortcut-btn { background: #1A2340; border-color: #2A3555; }
-[data-theme="dark"] .shortcut-btn__title { color: #E8ECFF; }
-[data-theme="dark"] .shortcut-btn__sub   { color: #7A85A0; }
-[data-theme="dark"] .theme-switch__track { background: #4A7C59; }
-[data-theme="dark"] .topbar__border-left,
-[data-theme="dark"] .topbar__border-right,
-[data-theme="dark"] .topbar__tab-border-l,
-[data-theme="dark"] .topbar__tab-border-r { background: #2A3555; }
+[data-theme="dark"] .bottombar    { background: var(--color-bg-surface); border-color: var(--color-border-card); }
+[data-theme="dark"] .topbar__tab--active { background: var(--color-bg-surface); }
+[data-theme="dark"] .hud-card-body       { background: var(--gradient-card); border-color: var(--color-border-card); }
+
+/* ── Submenu: 커스텀 서페이스 ── */
+[data-theme="dark"] .submenu-popover      { background: var(--color-bg-surface); border-color: var(--color-border-card); }
+[data-theme="dark"] .submenu-item__txt    { color: var(--color-text-secondary); }
+[data-theme="dark"] .submenu-item--active { background: var(--color-bg-input); }
+[data-theme="dark"] .submenu-badge__txt   { color: var(--color-info); }
+
+/* ── Mini card: 카드 내부 서브 서페이스는 input bg ── */
+[data-theme="dark"] .mini-card             { background: var(--color-bg-input); }
+
+/* ── Unit card item: 고유 서페이스 + tertiary lbl ── */
+[data-theme="dark"] .unit-card-item        { background: var(--color-bg-unit-card); border-color: var(--color-border-card); }
+[data-theme="dark"] .unit-card-item__lbl   { color: var(--color-text-tertiary); }
+[data-theme="dark"] .unit-card-item__num   { color: var(--color-text-primary); }
+
+/* ── Inventory: secondary 대신 tertiary 톤 ── */
+[data-theme="dark"] .inv-sub-label         { color: var(--color-text-tertiary); }
+
+/* ── Shortcut: 카드 내부 서브 서페이스는 input bg ── */
+[data-theme="dark"] .shortcut-btn          { background: var(--color-bg-input); }
+[data-theme="dark"] .shortcut-btn__sub     { color: var(--color-text-muted); }
+
+/* ── Gauge (half-donut): 다크에서 info 계열 강조 ── */
+[data-theme="dark"] .gauge__track          { stroke: var(--color-bg-input); }
+[data-theme="dark"] .gauge__fill           { stroke: var(--color-info); }
+[data-theme="dark"] .gauge__needle,
+[data-theme="dark"] .gauge__dot            { fill: var(--color-text-primary); }
+
+/* ── Person / photo: 다크 전용 커스텀 서페이스 ── */
+[data-theme="dark"] .photo-frame           { background: #111827; }
+[data-theme="dark"] .person-card           { border-top-color: #2F3A4F; }
+
+/* ── Calendar time: 다크에서 success는 라이트 톤 유지 ── */
+[data-theme="dark"] .cal-time-sec          { color: #4A7C59; }
+
+/* ── Search & filter: 다크 전용 커스텀 서페이스 ── */
+[data-theme="dark"] .search-box            { background: #1F2937; border-color: #3B475E; color: var(--color-text-primary); }
+[data-theme="dark"] .search-box::placeholder { color: var(--color-text-muted); }
+[data-theme="dark"] .filter-btn            { background: #334155; border-color: var(--color-border-card); color: var(--color-text-secondary); }
+
+/* ── Theme switch: 다크에서 success 톤 유지 ── */
+[data-theme="dark"] .theme-switch__track   { background: var(--color-success); }
