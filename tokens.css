@@ -71,10 +71,17 @@
   /* ── Colors / Semantic (info block) ── */
   --color-semantic-info-bg : #DFDFE6;
 
-  /* ── Colors / Surface states (hover / input / subtle divider) ── */
+  /* ── Colors / Surface states (hover / input / subtle divider / chrome) ── */
   --color-bg-hover       : #EDECEA;   /* surface hover (card, tag, item) */
   --color-bg-input       : #F0F2F7;   /* input/search/tab/badge neutral bg */
+  --color-bg-chrome      : #FFFFFF;   /* topbar/bottombar/popover shell */
   --color-border-subtle  : #F4F4F5;   /* list item subtle divider */
+
+  /* ── Colors / Text alt ── */
+  --color-text-subtle    : #888899;   /* 아주 흐린 텍스트 (tertiary 대비 다크에서 더 흐림) */
+
+  /* ── Colors / Static (모드 독립적 성공색) ── */
+  --color-success-static : #4A7C59;   /* 다크 모드에서도 라이트 톤 유지 */
 
   /* ── Card fill gradient ── */
   --gradient-card        : linear-gradient(180deg, #FFFFFF 0%, #FFFFFF 70%, #ECEEF3 100%);
@@ -171,7 +178,14 @@
     /* Surface states */
     --color-bg-hover       : #2A3555;
     --color-bg-input       : #253050;
+    --color-bg-chrome      : #151A28;
     --color-border-subtle  : #0A0F1C;
+
+    /* Text alt */
+    --color-text-subtle    : #5A6580;
+
+    /* Static (모드 독립) */
+    --color-success-static : #4A7C59;
 
     /* Card gradient */
     --gradient-card        : linear-gradient(180deg, #201E24 0%, #201E24 70%, #151A28 100%);
@@ -211,7 +225,10 @@
   --color-accent-teal    : #2DD4BF;
   --color-bg-hover       : #2A3555;
   --color-bg-input       : #253050;
+  --color-bg-chrome      : #151A28;
   --color-border-subtle  : #0A0F1C;
+  --color-text-subtle    : #5A6580;
+  --color-success-static : #4A7C59;
   --color-semantic-info-bg : #222229;
   --gradient-card        : linear-gradient(180deg, #201E24 0%, #201E24 70%, #151A28 100%);
 }
@@ -240,7 +257,10 @@
   --color-accent-teal    : #6BB6B0;
   --color-bg-hover       : #EDECEA;
   --color-bg-input       : #F0F2F7;
+  --color-bg-chrome      : #FFFFFF;
   --color-border-subtle  : #F4F4F5;
+  --color-text-subtle    : #888899;
+  --color-success-static : #4A7C59;
   --color-semantic-info-bg : #DFDFE6;
   --gradient-card        : linear-gradient(180deg, #FFFFFF 0%, #FFFFFF 70%, #ECEEF3 100%);
 }

@@ -6,15 +6,16 @@
  *   - Card shell (.card, .card__*)
  *
  * 컴포넌트별 스타일은 각자의 CSS 파일에 분리되어 있습니다:
- *   - component-kf21-dashboard.css  (KF-21 Dashboard / qSi6K)
- *   - component-kf21-lightboard.css (KF-21 Lightboard / DzWKp)
+ *   - dashboard.css   (KF-21 Lightboard / DzWKp — dashboard.html 에서 사용)
+ *   - components.css  (KF-21 Dashboard  / qSi6K — components.html 에서 사용)
  *
  * 의존성: tokens.css 가 먼저 로드되어야 합니다.
  *
  * 사용법:
  *   <link rel="stylesheet" href="tokens.css">
  *   <link rel="stylesheet" href="style.css">
- *   <link rel="stylesheet" href="component-kf21-*.css">
+ *   <link rel="stylesheet" href="dashboard.css">   또는
+ *   <link rel="stylesheet" href="components.css">
  */
 
 /* ══════════════════════════════════════════════
