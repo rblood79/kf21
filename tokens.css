@@ -75,7 +75,11 @@
   --color-bg-hover       : #EDECEA;   /* surface hover (card, tag, item) */
   --color-bg-input       : #F0F2F7;   /* input/search/tab/badge neutral bg */
   --color-bg-chrome      : #FFFFFF;   /* topbar/bottombar/popover shell */
+  --color-bg-sunken      : #F0F2F7;   /* raised input (search-box 계열) */
+  --color-bg-solid       : #555566;   /* 진한 버튼 bg (filter-btn 계열) */
+  --color-bg-photo       : #F5F4F1;   /* photo frame surface */
   --color-border-subtle  : #F4F4F5;   /* list item subtle divider */
+  --color-border-sunken  : rgba(0,0,0,.16);   /* sunken 입력 테두리 */
 
   /* ── Colors / Text alt ── */
   --color-text-subtle    : #888899;   /* 아주 흐린 텍스트 (tertiary 대비 다크에서 더 흐림) */
@@ -179,7 +183,11 @@
     --color-bg-hover       : #2A3555;
     --color-bg-input       : #253050;
     --color-bg-chrome      : #151A28;
+    --color-bg-sunken      : #1F2937;
+    --color-bg-solid       : #334155;
+    --color-bg-photo       : #111827;
     --color-border-subtle  : #0A0F1C;
+    --color-border-sunken  : #3B475E;
 
     /* Text alt */
     --color-text-subtle    : #5A6580;
@@ -226,7 +234,11 @@
   --color-bg-hover       : #2A3555;
   --color-bg-input       : #253050;
   --color-bg-chrome      : #151A28;
+  --color-bg-sunken      : #1F2937;
+  --color-bg-solid       : #334155;
+  --color-bg-photo       : #111827;
   --color-border-subtle  : #0A0F1C;
+  --color-border-sunken  : #3B475E;
   --color-text-subtle    : #5A6580;
   --color-success-static : #4A7C59;
   --color-semantic-info-bg : #222229;
@@ -258,7 +270,11 @@
   --color-bg-hover       : #EDECEA;
   --color-bg-input       : #F0F2F7;
   --color-bg-chrome      : #FFFFFF;
+  --color-bg-sunken      : #F0F2F7;
+  --color-bg-solid       : #555566;
+  --color-bg-photo       : #F5F4F1;
   --color-border-subtle  : #F4F4F5;
+  --color-border-sunken  : rgba(0,0,0,.16);
   --color-text-subtle    : #888899;
   --color-success-static : #4A7C59;
   --color-semantic-info-bg : #DFDFE6;

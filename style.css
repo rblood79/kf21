@@ -88,6 +88,40 @@ svg    { display: block; flex-shrink: 0; }
 }
 
 /* ══════════════════════════════════════════════
+   THEME SWITCH  (공통 UI — 다크/라이트 토글 스위치)
+══════════════════════════════════════════════ */
+.theme-switch {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.theme-switch__track {
+  width: 60px;
+  height: 30px;
+  border-radius: var(--r-full);
+  background: #D0D4DE;
+  padding: 2px;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: background .2s;
+}
+.theme-switch__thumb {
+  width: 26px;
+  height: 26px;
+  border-radius: var(--r-full);
+  background: var(--color-bg-white);
+  box-shadow: 0 1px 2px rgba(0,0,0,.13);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform .2s;
+}
+[data-theme="dark"] .theme-switch__track  { background: var(--color-success-static); }
+[data-theme="dark"] .theme-switch__thumb  { transform: translateX(30px); }
+
+/* ══════════════════════════════════════════════
    DARK MODE
    .card / .card__* 의 bg·border·색상은 tokens.css 의 CSS 변수가
    [data-theme="dark"] 에서 자동으로 스위칭되므로 오버라이드 불필요.

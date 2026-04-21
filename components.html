@@ -26,12 +26,17 @@
 ══════════════════════════════════════════════ -->
 <div class="kf21-dashboard" id="kf21-dashboard">
 
-  <!-- ── ROW 0: unit card strip ── -->
-  <div class="unit-strip">
+  <!-- ── ROW 0: unit card strip + theme toggle ── -->
+  <div class="unit-strip" style="display:flex;align-items:center;justify-content:space-between;">
     <div class="unit-card">
       <span class="unit-card__label">KF-21</span>
       <span class="unit-card__value">001</span>
       <span class="unit-card__unit">PMC</span>
+    </div>
+    <div class="theme-switch" aria-label="테마 전환">
+      <div class="theme-switch__track" role="button" tabindex="0" aria-label="라이트/다크 모드 전환">
+        <div class="theme-switch__thumb"></div>
+      </div>
     </div>
   </div>
 
@@ -567,6 +572,21 @@ document.querySelectorAll('.period-tab').forEach(tab => {
     tab.classList.add('active');
   });
 });
+
+/* 테마 스위치: <html data-theme="dark|light"> 토글. 스타일은 style.css 가 처리 */
+(() => {
+  const track = document.querySelector('.theme-switch__track');
+  if (!track) return;
+  const toggle = () => {
+    const root = document.documentElement;
+    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+  };
+  track.addEventListener('click', toggle);
+  track.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+  });
+})();
 </script>
 </body>
 </html>

@@ -56,7 +56,7 @@ body {
 .unit-card:hover { background: var(--color-bg-hover); }
 .unit-card__label { font-size: 12px; font-weight: 600; color: var(--color-text-dim); letter-spacing: 1px; }
 .unit-card__value { font-size: 16px; font-weight: 700; color: var(--color-text-dim); }
-.unit-card__unit  { font-size: 16px; font-weight: 700; color: #C0392B; }
+.unit-card__unit  { font-size: 16px; font-weight: 700; color: var(--color-error); }
 
 /* ══════════════════════════════════════════════
    ROW 1 — 4-card row + operation rate + right block
@@ -417,8 +417,8 @@ body {
 .search-box   {
   flex: 1; display: flex; align-items: center; gap: 6px;
   height: 32px; padding: 0 10px;
-  border-radius: var(--r-md); background: var(--color-bg-input);
-  border: 1px solid rgba(0,0,0,.16);
+  border-radius: var(--r-md); background: var(--color-bg-sunken);
+  border: 1px solid var(--color-border-sunken);
   transition: border-color .15s, background .15s;
 }
 .search-box:focus-within { border-color: var(--color-accent-blue); background: var(--color-bg-white); }
@@ -426,7 +426,7 @@ body {
 .filter-btn {
   display: flex; align-items: center; gap: 4px;
   height: 32px; padding: 0 12px;
-  border-radius: var(--r-md); background: var(--color-text-secondary);
+  border-radius: var(--r-md); background: var(--color-bg-solid);
   cursor: pointer; transition: background .15s;
 }
 .filter-btn:hover { background: #444455; }
@@ -443,8 +443,8 @@ body {
   box-shadow: var(--shadow-sm);
 }
 .photo-frame img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
-.photo-frame--blue   { border: 2px solid var(--color-accent-blue); background: var(--color-bg-surface); }
-.photo-frame--orange { border: 2px solid var(--color-accent-orange); background: #F0F0F3; }
+.photo-frame--blue   { border: 2px solid var(--color-accent-blue); background: var(--color-bg-photo); }
+.photo-frame--orange { border: 2px solid var(--color-accent-orange); background: var(--color-bg-photo); }
 .edit-btn {
   position: absolute; bottom: 0; right: 0;
   width: 32px; height: 32px; border-radius: 50%;
@@ -512,7 +512,6 @@ body {
 [data-theme="dark"] .unit-card        { border-color: var(--color-border-divider); }
 [data-theme="dark"] .unit-card:hover  { background: var(--color-bg-unit-card); }
 [data-theme="dark"] .unit-card__value { color: var(--color-text-secondary); }
-[data-theme="dark"] .unit-card__unit  { color: var(--color-error); }
 
 /* ── Gauge: 다크에서 info 계열 강조 ── */
 [data-theme="dark"] .gc2-val          { color: var(--color-info); }
@@ -549,12 +548,10 @@ body {
 [data-theme="dark"] .cal-day              { color: var(--color-text-secondary); }
 
 /* ── Person / search: 다크 전용 커스텀 서페이스 ── */
+/* search-box / filter-btn / photo-frame 배경·테두리는
+   bg-sunken / border-sunken / bg-solid / bg-photo 토큰으로 자동 전환 */
 [data-theme="dark"] .person-card          { border-top-color: #2F3A4F; }
-[data-theme="dark"] .search-box           { background: #1F2937; border-color: #3B475E; }
-[data-theme="dark"] .filter-btn           { background: #334155; border-color: var(--color-border-card); }
-[data-theme="dark"] .photo-frame,
-[data-theme="dark"] .photo-frame--blue,
-[data-theme="dark"] .photo-frame--orange  { background: #111827; }
+[data-theme="dark"] .filter-btn           { border-color: var(--color-border-card); }
 [data-theme="dark"] .photo-frame--blue    { border-color: var(--color-info); }
 [data-theme="dark"] .photo-frame--orange  { border-color: var(--color-warning); }
 [data-theme="dark"] .rank-badge--blue     { background: #1E3A5F; color: var(--color-text-primary); }

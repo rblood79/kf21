@@ -782,16 +782,12 @@ document.querySelectorAll('.bottombar__tab').forEach(tab => {
   });
 });
 
-/* 테마 스위치 */
+/* 테마 스위치: data-theme 속성만 토글, thumb 위치·track 색상은 style.css 에서 처리 */
 const track = document.querySelector('.theme-switch__track');
-const thumb  = document.querySelector('.theme-switch__thumb');
-const board  = document.getElementById('lightBoard');
-let dark = false;
+const board = document.getElementById('lightBoard');
 track.addEventListener('click', () => {
-  dark = !dark;
-  board.setAttribute('data-theme', dark ? 'dark' : 'light');
-  thumb.style.transform = dark ? 'translateX(30px)' : 'translateX(0)';
-  track.style.background = dark ? '#4A7C59' : '';
+  const next = board.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  board.setAttribute('data-theme', next);
 });
 
 /* 서브메뉴 팝오버 토글 (기술지원 탭 클릭) */

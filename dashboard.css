@@ -122,34 +122,7 @@
 }
 .topbar__ai-btn:hover { opacity: .85; }
 
-/* 테마 스위치 */
-.theme-switch {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-.theme-switch__track {
-  width: 60px;
-  height: 30px;
-  border-radius: 32px;
-  background: #D0D4DE;
-  padding: 2px;
-  position: relative;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-}
-.theme-switch__thumb {
-  width: 26px;
-  height: 26px;
-  border-radius: 28px;
-  background: #FFFFFF;
-  box-shadow: 0 1px 2px rgba(0,0,0,.13);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform .2s;
-}
+/* 테마 스위치 스타일은 style.css (공통) 에 있습니다 */
 
 /* 탑바 하단 경계선 분리 (활성 탭 구간 양옆) */
 .topbar__border-left {
@@ -839,17 +812,9 @@
 [data-theme="dark"] .gauge__needle,
 [data-theme="dark"] .gauge__dot            { fill: var(--color-text-primary); }
 
-/* ── Person / photo: 다크 전용 커스텀 서페이스 ── */
-[data-theme="dark"] .photo-frame           { background: #111827; }
-[data-theme="dark"] .person-card           { border-top-color: #2F3A4F; }
-
 /* ── Calendar time: success-static 토큰 사용 시 자동 전환됨 ── */
 .cal-time-sec { color: var(--color-success-static); }
 
-/* ── Search & filter: 다크 전용 커스텀 서페이스 ── */
-[data-theme="dark"] .search-box            { background: #1F2937; border-color: #3B475E; color: var(--color-text-primary); }
-[data-theme="dark"] .search-box::placeholder { color: var(--color-text-muted); }
-[data-theme="dark"] .filter-btn            { background: #334155; border-color: var(--color-border-card); color: var(--color-text-secondary); }
-
-/* ── Theme switch: 다크에서 success 톤 유지 ── */
-[data-theme="dark"] .theme-switch__track   { background: var(--color-success-static); }
+/* .theme-switch 다크 오버라이드는 style.css (공통) 에 있습니다 */
+/* .search-box / .filter-btn / .photo-frame / .person-card 는 lightboard 에서 미사용 —
+   components.css(qSi6K dashboard) 에서만 정의됨 */
