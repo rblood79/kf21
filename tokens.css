@@ -1,0 +1,226 @@
+/**
+ * KF-21 Design Tokens — tokens.css
+ *
+ * 사용법:
+ *   <link rel="stylesheet" href="tokens.css">
+ *
+ *   모든 컴포넌트는 아래 CSS 변수를 참조합니다.
+ *
+ *   라이트 모드 : 기본값 (:root)
+ *   다크  모드  : @media (prefers-color-scheme: dark)  또는
+ *                data-theme="dark" 속성으로 강제 전환 가능
+ *
+ * 네이밍 규칙 (짧은 prefix 일관 적용):
+ *   --color-*    Colors (bg / text / border / status / accent / mc-nmc-pmc / semantic)
+ *   --gradient-* Gradients
+ *   --sp-*       Spacing
+ *   --r-*        Border Radius
+ *   --ff-*       Font Family
+ *   --fs-*       Font Size
+ *   --fw-*       Font Weight
+ *   --ls-*       Letter Spacing
+ *   --shadow-*   Shadows
+ */
+
+/* ═══════════════════════════════════════════════
+   LIGHT MODE (default)
+═══════════════════════════════════════════════ */
+:root {
+
+  /* ── Colors / Background ── */
+  --color-bg-page        : #F4F4F9;   /* app shell background */
+  --color-bg-card        : #E8E4DC;   /* card surface */
+  --color-bg-white       : #FFFFFF;   /* pure white surface */
+  --color-bg-surface     : #F5F4F1;   /* secondary surface */
+  --color-bg-card-glass  : #1A2340CC; /* glass/modal overlay (mode-independent) */
+
+  /* ── Colors / Text ── */
+  --color-text-primary   : #1A1A2E;   /* headings, values */
+  --color-text-secondary : #555566;   /* body text */
+  --color-text-muted     : #666666;   /* labels, captions */
+  --color-text-tertiary  : #888899;   /* placeholders, icons */
+  --color-text-dim       : #767676;   /* dimmed text */
+
+  /* ── Colors / Border ── */
+  --color-border-light   : #D1CCC4;   /* light dividers */
+  --color-border-card    : #E0E3EB;   /* card border */
+  --color-border-divider : #E0E3EB;   /* inline divider across cards */
+  --color-border-surface : #D0D0CC;   /* surface boundary */
+
+  /* ── Colors / Status ── */
+  --color-success        : #4A7C59;   /* green */
+  --color-success-dim    : rgba(74, 124, 89, 0.125);
+  --color-error          : #B54A4A;   /* red */
+  --color-error-dim      : #EF444430;
+  --color-warning        : #C05A3C;   /* amber/orange-red */
+  --color-warning-dim    : #F59E0B30;
+  --color-info           : #5C7C8A;   /* steel blue */
+  --color-info-dim       : #38BDF830;
+  --color-info-foreground: #000066;
+
+  /* ── Colors / Accent ── */
+  --color-accent-orange  : #E89B5C;
+  --color-accent-teal    : #6BB6B0;
+  --color-accent-blue    : #4A7BA8;
+
+  /* ── Colors / Status Badge ── */
+  --color-mc             : #34D399;   /* Mission Capable (green) */
+  --color-nmc            : #EF4444;   /* Non-Mission Capable (red) */
+  --color-pmc            : #38BDF8;   /* Partial Mission Capable (blue) */
+
+  /* ── Colors / Semantic (info block) ── */
+  --color-semantic-info-bg : #DFDFE6;
+
+  /* ── Card fill gradient ── */
+  --gradient-card        : linear-gradient(180deg, #FFFFFF 0%, #FFFFFF 70%, #ECEEF3 100%);
+
+  /* ── Spacing ── */
+  --sp-xs  :  4px;
+  --sp-sm  :  8px;
+  --sp-md  : 12px;
+  --sp-lg  : 16px;
+  --sp-xl  : 20px;
+  --sp-2xl : 24px;
+
+  /* ── Border Radius ── */
+  --r-none :  0px;
+  --r-sm   :  4px;
+  --r-md   :  6px;
+  --r-lg   :  8px;
+  --r-xl   : 12px;
+  --r-2xl  : 16px;
+  --r-full : 9999px;
+
+  /* ── Typography / Font Family ── */
+  --ff-base      : 'Noto Sans KR', 'Noto Sans', sans-serif;
+  --ff-secondary : 'Geist', 'Inter', sans-serif;
+  --ff-mono      : 'Inter', monospace;
+
+  /* ── Typography / Font Size ── */
+  --fs-xs   : 11px;
+  --fs-sm   : 12px;
+  --fs-base : 13px;
+  --fs-md   : 14px;
+  --fs-lg   : 16px;
+  --fs-xl   : 18px;
+  --fs-2xl  : 21px;
+  --fs-3xl  : 28px;
+
+  /* ── Typography / Font Weight ── */
+  --fw-normal   : 400;
+  --fw-medium   : 500;
+  --fw-semibold : 600;
+  --fw-bold     : 700;
+
+  /* ── Typography / Letter Spacing ── */
+  --ls-tight  : 0px;
+  --ls-normal : 0.5px;
+  --ls-wide   : 1px;
+
+  /* ── Shadows ── */
+  --shadow-card  : 0 2px 7px rgba(0, 0, 0, 0.059), 0 4px 10.5px rgba(0, 0, 0, 0.102);
+  --shadow-sm    : 0 2px 4px rgba(0, 0, 0, 0.16);
+  --shadow-btn   : 0 2px 6px rgba(0, 0, 0, 0.2);
+  --shadow-photo : 0 2px 4px rgba(0, 0, 0, 0.16);
+  --shadow-blur  : 0 2px 4px rgba(0, 0, 0, 0.072);
+}
+
+/* ═══════════════════════════════════════════════
+   DARK MODE — via prefers-color-scheme
+═══════════════════════════════════════════════ */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Background */
+    --color-bg-page        : #0A0F1A;
+    --color-bg-card        : #131B2E;
+    --color-bg-white       : #0D1525;
+    --color-bg-surface     : #16213A;
+
+    /* Text */
+    --color-text-primary   : #E8ECFF;
+    --color-text-secondary : #B0B8D0;
+    --color-text-muted     : #7A85A0;
+    --color-text-tertiary  : #5A6580;
+    --color-text-dim       : #8A909E;
+
+    /* Border */
+    --color-border-light   : #2A3555;
+    --color-border-card    : #2A3555;
+    --color-border-divider : #2A3555;
+    --color-border-surface : #2A3555;
+
+    /* Status */
+    --color-success        : #34D399;
+    --color-success-dim    : rgba(52, 211, 153, 0.12);
+    --color-error          : #EF4444;
+    --color-warning        : #F59E0B;
+    --color-info           : #38BDF8;
+    --color-info-foreground: #B2B2FF;
+
+    /* Accent */
+    --color-accent-orange  : #F59E0B;
+    --color-accent-teal    : #2DD4BF;
+
+    /* Card gradient */
+    --gradient-card        : linear-gradient(180deg, #0D1525 0%, #0D1525 70%, #131B2E 100%);
+
+    /* Semantic info bg */
+    --color-semantic-info-bg : #222229;
+  }
+}
+
+/* ═══════════════════════════════════════════════
+   DARK MODE — via data-theme attribute override
+   Usage: <html data-theme="dark"> or <div data-theme="dark">
+═══════════════════════════════════════════════ */
+[data-theme="dark"] {
+  --color-bg-page        : #0A0F1A;
+  --color-bg-card        : #131B2E;
+  --color-bg-white       : #0D1525;
+  --color-bg-surface     : #16213A;
+  --color-text-primary   : #E8ECFF;
+  --color-text-secondary : #B0B8D0;
+  --color-text-muted     : #7A85A0;
+  --color-text-tertiary  : #5A6580;
+  --color-text-dim       : #8A909E;
+  --color-border-light   : #2A3555;
+  --color-border-card    : #2A3555;
+  --color-border-divider : #2A3555;
+  --color-border-surface : #2A3555;
+  --color-success        : #34D399;
+  --color-success-dim    : rgba(52, 211, 153, 0.12);
+  --color-error          : #EF4444;
+  --color-warning        : #F59E0B;
+  --color-info           : #38BDF8;
+  --color-info-foreground: #B2B2FF;
+  --color-accent-orange  : #F59E0B;
+  --color-accent-teal    : #2DD4BF;
+  --color-semantic-info-bg : #222229;
+  --gradient-card        : linear-gradient(180deg, #0D1525 0%, #0D1525 70%, #131B2E 100%);
+}
+
+[data-theme="light"] {
+  --color-bg-page        : #F4F4F9;
+  --color-bg-card        : #E8E4DC;
+  --color-bg-white       : #FFFFFF;
+  --color-bg-surface     : #F5F4F1;
+  --color-text-primary   : #1A1A2E;
+  --color-text-secondary : #555566;
+  --color-text-muted     : #666666;
+  --color-text-tertiary  : #888899;
+  --color-text-dim       : #767676;
+  --color-border-light   : #D1CCC4;
+  --color-border-card    : #E0E3EB;
+  --color-border-divider : #E0E3EB;
+  --color-border-surface : #D0D0CC;
+  --color-success        : #4A7C59;
+  --color-success-dim    : rgba(74, 124, 89, 0.125);
+  --color-error          : #B54A4A;
+  --color-warning        : #C05A3C;
+  --color-info           : #5C7C8A;
+  --color-info-foreground: #000066;
+  --color-accent-orange  : #E89B5C;
+  --color-accent-teal    : #6BB6B0;
+  --color-semantic-info-bg : #DFDFE6;
+  --gradient-card        : linear-gradient(180deg, #FFFFFF 0%, #FFFFFF 70%, #ECEEF3 100%);
+}

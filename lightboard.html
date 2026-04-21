@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<!--
+  KF-21 Dashboard — lightBoard (DzWKp)
+  ─────────────────────────────────────
+  • 외부 의존성: Google Fonts CDN, tokens.css, style.css (동일 경로)
+  • 1920×1200 기준
+  • data-theme="dark" 속성으로 다크 모드 전환 가능
+-->
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KF-21 lightBoard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&family=Noto+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body style="margin:0;background:#e0e0e0;padding:0;">
+
+<!-- ══════════════════════════════════════════════
+     lightBoard ROOT  1920×1200
+══════════════════════════════════════════════ -->
+<div class="lightboard" id="lightBoard">
+
+  <!-- ════════════════════════════════════
+       TOP BAR (epeGZ) — height:48px
+  ════════════════════════════════════ -->
+  <div class="topbar">
+
+    <!-- 좌: 로고 (OmfMf) -->
+    <div class="topbar__logo">
+      <img class="topbar__logo-img" src="kf21LIS.png" alt="KF-21 LIS" onerror="this.style.display='none'">
+    </div>
+
+    <!-- 중앙: 탭 그룹 (SGZwV) -->
+    <div class="topbar__tabs">
+      <!-- 메뉴 아이콘 탭 (zFQH1) width:48 -->
+      <button class="topbar__tab topbar__tab--menu-icon" aria-label="메뉴" style="width:48px;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#303030" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <!-- 보급지원 (nqTsh) width:92, border 없음 -->
+      <button class="topbar__tab" style="width:92px;">보급지원</button>
+      <!-- 기술지원 (IdUrS) width:92, ACTIVE, fill:#FFFFFF -->
+      <button class="topbar__tab topbar__tab--active" style="width:92px;">기술지원</button>
+      <!-- 수명정보 (ookZz) width:92 -->
+      <button class="topbar__tab" style="width:92px;">수명정보</button>
+      <!-- 고장/정비지식 (B6k8R) width:129 -->
+      <button class="topbar__tab" style="width:129px;">고장/정비지식</button>
+      <!-- 시스템관리 (eXm9F) width:107 -->
+      <button class="topbar__tab" style="width:107px;">시스템관리</button>
+    </div>
+
+    <!-- 우: 유저 + AI Chat + 테마 스위치 (opU4w) width:300 -->
+    <div class="topbar__right">
+      <span class="topbar__user-txt">MANAGER</span>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6B6B80" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+      <button class="topbar__ai-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        AI Chat
+      </button>
+      <div class="theme-switch">
+        <div class="theme-switch__track">
+          <div class="theme-switch__thumb"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 하단 경계선 보조 엘리먼트 (drl6A, qvPZq, C08jG, qtKA9) -->
+    <div class="topbar__border-left"></div>
+    <div class="topbar__border-right"></div>
+    <div class="topbar__tab-border-l"></div>
+    <div class="topbar__tab-border-r"></div>
+  </div><!-- /topbar -->
+
+  <!-- ════════════════════════════════════
+       CENTER AREA (elIAm) — padding:24px
+  ════════════════════════════════════ -->
+  <div class="center-area">
+
+    <!-- ── LEFT PANEL (5BYZM) 299px ── -->
+    <div class="left-panel">
+
+      <!-- 가동률 카드 (xalZW) 298.5×265 -->
+      <div class="card gauge-card">
+        <div class="card__header">
+          <div class="card__header-left">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#888888" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+            <span class="card__title" style="color:#666666;">가동률</span>
+          </div>
+          <span class="card__badge card__badge--live">LIVE</span>
+        </div>
+
+        <!-- 게이지 SVG (Ek1Ub) 277×133, layout:none -->
+        <div class="gauge-svg-area">
+          <!--
+            gaugeTrack: ellipse cx=138 cy=170 r=120(반원), innerRadius=0.82 → strokeWidth≈22
+            startAngle=180(좌), sweepAngle=-180(반시계 180°) → 반원 아래→위→아래 트랙
+            gaugeFill: sweepAngle=-126 (72%×175°≈126°, 0%=180° 좌에서 시작)
+            SVG arc: M=start, A=arc
+            startAngle=180(9시 방향)에서 sweepAngle=-126(시계방향 126°)
+            → 종단각 = 180-126 = 54° (우상단 방향)
+            반원 트랙: M(18,128) A(120,120,0,0,1,258,128)
+            채움 72%: 끝점 = cx+r·cos(54°), cy-r·sin(54°)
+              = 138+120·cos(54°), 128-120·sin(54°)
+              = 138+70.5, 128-97.1 ≈ (209, 31)
+            needleAngle=54° → rotate(54deg) from (138,90)
+          -->
+          <svg width="277" height="133" viewBox="0 0 277 133">
+            <!-- 트랙 반원 -->
+            <path d="M18 128 A120 120 0 0 1 258 128"
+                  fill="none" stroke="#E8E4DC" stroke-width="22" stroke-linecap="round"/>
+            <!-- 채움 72% (sweepAngle -126°) -->
+            <path d="M18 128 A120 120 0 0 1 209 31"
+                  fill="none" stroke="#4a7ba8" stroke-width="22" stroke-linecap="round"/>
+          </svg>
+          <!-- 중앙 값 레이블 (qqcyk) x:89 y:100 w:100 h:38 -->
+          <div class="gauge-center-val">72%</div>
+          <!-- 바늘 dot (Znj8V) x:129 y:81 w:18 h:18 -->
+          <div class="gauge-needle-dot"></div>
+          <!-- 바늘 (kgctC) x:138 y:90 w:50 h:3 rotate:54° -->
+          <div class="gauge-needle"></div>
+        </div>
+
+        <!-- gc2Rows (DeSYT) -->
+        <div class="gc2-rows">
+          <div class="gc2-row">
+            <!-- gc2Row2Top (pNMxu) width:180 -->
+            <div class="gc2-row-top">
+              <span class="gc2-label">전체 가동 률</span>
+              <span class="gc2-val">78%</span>
+            </div>
+            <!-- gc2Row2TrackWrap (3P0JC) width:180 h:6 layout:none -->
+            <div class="gc2-track">
+              <div class="gc2-bg"></div>
+              <!-- gc2Row2FgBar width:139 -->
+              <div class="gc2-fg" style="width:139px;"></div>
+            </div>
+          </div>
+        </div>
+      </div><!-- /gauge-card -->
+
+      <!-- 작업장 재고 카드 (fA5HS) 299×488 -->
+      <div class="card inventory-card">
+        <div class="card__header">
+          <div class="card__header-left">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#888888" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+            <span class="card__title" style="color:#666666;">작업장 재고</span>
+          </div>
+          <button class="card__more-btn">•••</button>
+        </div>
+
+        <!-- 청구 및 수령 현황 (U274O) h:208 -->
+        <div class="inv-section" style="height:208px;">
+          <span class="inv-sub-label">- 청구 및 수령 현황</span>
+          <div class="inv-legend">
+            <div class="inv-leg-item">
+              <div class="inv-leg-dot" style="background:#4a7ba8;"></div>
+              <span class="inv-leg-txt">청구</span>
+            </div>
+            <div class="inv-leg-item">
+              <div class="inv-leg-dot" style="background:#e89b5c;"></div>
+              <span class="inv-leg-txt">수령</span>
+            </div>
+          </div>
+          <!-- chartArea (hX8tB): 요일별 바 차트 → 실제 데이터: 월화수목금토일 -->
+          <div class="inv-bar-chart" style="flex:1;">
+            <!-- g1: 월 청구104 수령78 -->
+            <div class="inv-bar-col">
+              <div class="inv-bar-seg" style="height:104px;background:#4a7ba8;"></div>
+              <div class="inv-bar-seg" style="height:78px;background:#e89b5c;border-radius:0;"></div>
+              <span style="font-size:10px;color:#888899;">월</span>
+            </div>
+            <!-- g2: 화 91/65 -->
+            <div class="inv-bar-col">
+              <div class="inv-bar-seg" style="height:91px;background:#4a7ba8;"></div>
+              <div class="inv-bar-seg" style="height:65px;background:#e89b5c;border-radius:0;"></div>
+              <span style="font-size:10px;color:#888899;">화</span>
+            </div>
+            <!-- g3: 수 117/91 -->
+            <div class="inv-bar-col">
+              <div class="inv-bar-seg" style="height:117px;background:#4a7ba8;"></div>
+              <div class="inv-bar-seg" style="height:91px;background:#e89b5c;border-radius:0;"></div>
+              <span style="font-size:10px;color:#888899;">수</span>
+            </div>
+            <!-- g4: 목 78/52 -->
+            <div class="inv-bar-col">
+              <div class="inv-bar-seg" style="height:78px;background:#4a7ba8;"></div>
+              <div class="inv-bar-seg" style="height:52px;background:#e89b5c;border-radius:0;"></div>
+              <span style="font-size:10px;color:#888899;">목</span>
+            </div>
+            <!-- g5: 금 130/104 -->
+            <div class="inv-bar-col">
+              <div class="inv-bar-seg" style="height:130px;background:#4a7ba8;"></div>
+              <div class="inv-bar-seg" style="height:104px;background:#e89b5c;border-radius:0;"></div>
+              <span style="font-size:10px;color:#888899;">금</span>
+            </div>
+            <!-- g6: 토 52/39 -->
+            <div class="inv-bar-col">
+              <div class="inv-bar-seg" style="height:52px;background:#4a7ba8;"></div>
+              <div class="inv-bar-seg" style="height:39px;background:#e89b5c;border-radius:0;"></div>
+              <span style="font-size:10px;color:#888899;">토</span>
+            </div>
+            <!-- g7: 일 39/26 -->
+            <div class="inv-bar-col">
+              <div class="inv-bar-seg" style="height:39px;background:#4a7ba8;"></div>
+              <div class="inv-bar-seg" style="height:26px;background:#e89b5c;border-radius:0;"></div>
+              <span style="font-size:10px;color:#888899;">일</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card__divider"></div>
+
+        <!-- 재고 현황 (BGtJg) h:183 -->
+        <div class="inv-section" style="height:183px;">
+          <span class="inv-sub-label">- 재고 현황</span>
+          <div class="inv-donut-row" style="height:130px;">
+            <!--
+              Donut 차트 (USU72) 100×100, innerRadius=0.65
+              슬라이스별 startAngle/sweepAngle (Pencil 기준: 0°=오른쪽, CCW양수)
+              slice1: #4a7ba8 start=90° sweep=-144° (40%)
+              slice2: #e89b5c start=-54° sweep=-90°  (25%)
+              slice3: #6BB6B0 start=-144° sweep=-72° (20%)
+              slice4: #B54A4A start=-216° sweep=-54° (15%)
+              SVG arc (표준: 0°=3시, CW양수) 변환:
+                Pencil CCW → SVG CW: angle_svg = -angle_pencil
+              r_outer=50, r_inner=50×0.65=32.5, cx=cy=50
+              slice1: start_svg=−90°(12시), sweep_svg=+144°(CW)
+                end_angle = −90+144 = 54°
+                outer_start=(50+50·cos(−90),50+50·sin(−90))=(50,0)
+                outer_end=(50+50·cos(54),50+50·sin(54))=(79.4,90.5)
+                inner_start=(50+32.5·cos(54),50+32.5·sin(54))=(69.1,76.3)
+                inner_end=(50+32.5·cos(−90),50+32.5·sin(−90))=(50,17.5)
+              이하 annular sector path 사용
+            -->
+            <svg width="100" height="100" viewBox="0 0 100 100">
+              <!-- slice1: 엔진부품 40%, 파랑 #4a7ba8
+                   start=-90°→12시, sweep=+144° CW
+                   outer: (50,0)→(79.4,90.5), inner: (69.1,76.3)→(50,17.5) -->
+              <path d="M50 0 A50 50 0 0 1 79.4 90.5 L69.1 76.3 A32.5 32.5 0 0 0 50 17.5 Z"
+                    fill="#4a7ba8"/>
+              <!-- sep1 white gap at 54° -->
+              <!-- slice2: 전자장비 25%, 오렌지 #e89b5c
+                   start=54° sweep=+90° → end=144°
+                   outer_start=(50+50·cos54,50+50·sin54)=(79.4,90.5)
+                   outer_end=(50+50·cos144,50+50·sin144)=(9.5,79.4)
+                   inner same reversed -->
+              <path d="M79.4 90.5 A50 50 0 0 1 9.5 79.4 L19.8 67.6 A32.5 32.5 0 0 0 69.1 76.3 Z"
+                    fill="#e89b5c"/>
+              <!-- slice3: 유압부품 20%, 민트 #6BB6B0
+                   start=144° sweep=+72° → end=216°
+                   outer_start=(9.5,79.4) outer_end=(-40.8,29.4)→clamped=(9.2,29.4)
+                   cos216=-0.809 sin216=-0.588
+                   outer_end=(50+50·(-.809),50+50·(-.588))=(9.6,20.6)
+                   inner same -->
+              <path d="M9.5 79.4 A50 50 0 0 1 9.6 20.6 L19.7 32.4 A32.5 32.5 0 0 0 19.8 67.6 Z"
+                    fill="#6BB6B0"/>
+              <!-- slice4: 기타 15%, 빨강 #B54A4A
+                   start=216° sweep=+54° → end=270°
+                   outer_start=(9.6,20.6) outer_end=(50,-50)→(50,0) ← 270°=6시아님 12시
+                   cos270=0 sin270=-1 → (50+0,50-50)=(50,0) ← 12시 = -90° 시작점
+                   연결됨 -->
+              <path d="M9.6 20.6 A50 50 0 0 1 50 0 L50 17.5 A32.5 32.5 0 0 0 19.7 32.4 Z"
+                    fill="#B54A4A"/>
+              <!-- 흰 구분선 -->
+              <line x1="50" y1="0"  x2="50" y2="17.5" stroke="#fff" stroke-width="1.5"/>
+              <line x1="79.4" y1="90.5" x2="69.1" y2="76.3" stroke="#fff" stroke-width="1.5"/>
+              <line x1="9.5"  y1="79.4" x2="19.8" y2="67.6" stroke="#fff" stroke-width="1.5"/>
+              <line x1="9.6"  y1="20.6" x2="19.7" y2="32.4" stroke="#fff" stroke-width="1.5"/>
+            </svg>
+            <div class="inv-pie-legend">
+              <div class="inv-pie-leg-item"><div class="inv-leg-dot" style="background:#4a7ba8;"></div><span class="inv-pie-leg-txt">엔진부품</span><span class="inv-pie-leg-val" style="margin-left:4px;">40%</span></div>
+              <div class="inv-pie-leg-item"><div class="inv-leg-dot" style="background:#e89b5c;"></div><span class="inv-pie-leg-txt">전자장비</span><span class="inv-pie-leg-val" style="margin-left:4px;">25%</span></div>
+              <div class="inv-pie-leg-item"><div class="inv-leg-dot" style="background:#6BB6B0;"></div><span class="inv-pie-leg-txt">유압부품</span><span class="inv-pie-leg-val" style="margin-left:4px;">20%</span></div>
+              <div class="inv-pie-leg-item"><div class="inv-leg-dot" style="background:#B54A4A;"></div><span class="inv-pie-leg-txt">기타</span><span class="inv-pie-leg-val" style="margin-left:4px;">15%</span></div>
+            </div>
+          </div>
+        </div>
+      </div><!-- /inventory-card -->
+
+      <!-- 바로가기 카드 (ug7sU) 298.5×265 -->
+      <div class="card shortcut-card">
+        <div class="card__header-left">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#767676" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          <span class="card__title" style="color:#767676;">바로가기</span>
+        </div>
+        <div class="shortcut-grid">
+          <!-- row1 (tG7Zs) -->
+          <div class="shortcut-row">
+            <button class="shortcut-btn">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#4A7C59" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+              <span class="shortcut-btn__title">IETM</span>
+              <span class="shortcut-btn__sub">전자식 기술교범</span>
+            </button>
+            <button class="shortcut-btn">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#4A7C59" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+              <span class="shortcut-btn__title">AEOMMS</span>
+              <span class="shortcut-btn__sub">엔진수명관리</span>
+            </button>
+          </div>
+          <!-- row2 (l2YjS) -->
+          <div class="shortcut-row">
+            <button class="shortcut-btn">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#4A7C59" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+              <span class="shortcut-btn__title">DELLIS</span>
+              <span class="shortcut-btn__sub">국방군수통합체계</span>
+            </button>
+            <button class="shortcut-btn">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#4A7C59" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <span class="shortcut-btn__title">KDPS</span>
+              <span class="shortcut-btn__sub">국방수송체계</span>
+            </button>
+          </div>
+        </div>
+      </div><!-- /shortcut-card -->
+
+    </div><!-- /left-panel -->
+
+    <!-- ── HUD CARD BODY (xpddy) fill_container ── -->
+    <div class="hud-card-body">
+
+      <!-- 배경 장식 -->
+      <!-- 수직선 (DQ0sO) x:612 -->
+      <div class="hud-line-v"></div>
+      <!-- 수평선 (wbNhv) y:590 -->
+      <div class="hud-line-h"></div>
+
+      <!-- 링 장식 (ejYtp) x:462 y:448 w:300 h:300 -->
+      <div class="hud-ring" style="left:462px;top:448px;width:300px;height:300px;border:1px solid rgba(122,155,181,.33);"></div>
+      <!-- ring4 (3jI1K) x:162 y:148 w:900 h:900 -->
+      <div class="hud-ring" style="left:162px;top:148px;width:900px;height:900px;border:1px solid rgba(122,155,181,.165);"></div>
+      <!-- ring5 (IyEC4) x:62 y:48 w:1100 h:1100 -->
+      <div class="hud-ring" style="left:62px;top:48px;width:1100px;height:1100px;border:1px solid rgba(122,155,181,.094);"></div>
+
+      <!-- 상태 헤더 (mUC2N) x:20 y:20 -->
+      <div class="hud-status-header">
+        <div class="hud-status-badge"><span class="hud-status-badge__txt">LIVE</span></div>
+        <span class="hud-status-label">KF-21 002 OPERRATION STATUS</span>
+      </div>
+
+      <!-- 기체 이미지 (KKcnG) x:30 y:46 w:1162 h:1018 -->
+      <div class="hud-content">
+        <img class="hud-content__img-side" src="aaaa.png" alt="" onerror="this.style.display='none'" style="transform:rotate(180deg);">
+        <img class="hud-content__img-main" src="ai.png" alt="KF-21" onerror="this.style.display='none'">
+        <img class="hud-content__img-side" src="aaaa.png" alt="" onerror="this.style.display='none'">
+      </div>
+
+      <!-- KF-21 UNIT 카드 (m6V72) x:39 y:890 -->
+      <div class="unit-box">
+        <span class="unit-box__title">KF-21 UNIT</span>
+        <div class="unit-grid">
+          <!-- gridRow1 (tSD7j): 001~008 -->
+          <div class="unit-grid-row">
+            <div class="unit-card-item">
+              <span class="unit-card-item__lbl">KF-21</span>
+              <span class="unit-card-item__num">001</span>
+              <span class="unit-card-item__status unit-card-item__status--mc">MC</span>
+            </div>
+            <div class="unit-card-item unit-card-item--nmc">
+              <span class="unit-card-item__lbl unit-card-item__lbl--nmc">KF-21</span>
+              <span class="unit-card-item__num unit-card-item__num--nmc">002</span>
+              <span class="unit-card-item__status unit-card-item__status--nmc">NMC</span>
+            </div>
+            <div class="unit-card-item">
+              <span class="unit-card-item__lbl">KF-21</span>
+              <span class="unit-card-item__num">003</span>
+              <span class="unit-card-item__status unit-card-item__status--pmc">PMC</span>
+            </div>
+            <div class="unit-card-item">
+              <span class="unit-card-item__lbl">KF-21</span>
+              <span class="unit-card-item__num">004</span>
+              <span class="unit-card-item__status unit-card-item__status--mc">MC</span>
+            </div>
+            <div class="unit-card-item">
+              <span class="unit-card-item__lbl">KF-21</span>
+              <span class="unit-card-item__num">005</span>
+              <span class="unit-card-item__status unit-card-item__status--mc">MC</span>
+            </div>
+            <div class="unit-card-item">
+              <span class="unit-card-item__lbl">KF-21</span>
+              <span class="unit-card-item__num">006</span>
+              <span class="unit-card-item__status unit-card-item__status--mc">MC</span>
+            </div>
+            <div class="unit-card-item">
+              <span class="unit-card-item__lbl">KF-21</span>
+              <span class="unit-card-item__num">007</span>
+              <span class="unit-card-item__status unit-card-item__status--pmc">PMC</span>
+            </div>
+            <div class="unit-card-item">
+              <span class="unit-card-item__lbl">KF-21</span>
+              <span class="unit-card-item__num">008</span>
+              <span class="unit-card-item__status unit-card-item__status--mc">MC</span>
+            </div>
+          </div>
+          <!-- gridRow2 (PyRs9): 009~016 -->
+          <div class="unit-grid-row">
+            <div class="unit-card-item">
+              <span class="unit-card-item__lbl">KF-21</span>
+              <span class="unit-card-item__num">009</span>
+              <span class="unit-card-item__status unit-card-item__status--mc">MC</span>
+            </div>
+            <div class="unit-card-item">
+              <span class="unit-card-item__lbl">KF-21</span>
+              <span class="unit-card-item__num">010</span>
+              <span class="unit-card-item__status unit-card-item__status--pmc">PMC</span>
+            </div>
+            <div class="unit-card-item">
+              <span class="unit-card-item__lbl">KF-21</span>
+              <span class="unit-card-item__num">011</span>
+              <span class="unit-card-item__status unit-card-item__status--mc">MC</span>
+            </div>
+            <div class="unit-card-item">
+              <span class="unit-card-item__lbl">KF-21</span>
+              <span class="unit-card-item__num">012</span>
+              <span class="unit-card-item__status unit-card-item__status--mc">MC</span>
+            </div>
+            <div class="unit-card-item">
+              <span class="unit-card-item__lbl">KF-21</span>
+              <span class="unit-card-item__num">013</span>
+              <span class="unit-card-item__status unit-card-item__status--mc">MC</span>
+            </div>
+            <div class="unit-card-item">
+              <span class="unit-card-item__lbl">KF-21</span>
+              <span class="unit-card-item__num">014</span>
+              <span class="unit-card-item__status unit-card-item__status--pmc">PMC</span>
+            </div>
+            <div class="unit-card-item">
+              <span class="unit-card-item__lbl">KF-21</span>
+              <span class="unit-card-item__num">015</span>
+              <span class="unit-card-item__status unit-card-item__status--mc">MC</span>
+            </div>
+            <div class="unit-card-item">
+              <span class="unit-card-item__lbl">KF-21</span>
+              <span class="unit-card-item__num">016</span>
+              <span class="unit-card-item__status unit-card-item__status--mc">MC</span>
+            </div>
+          </div>
+        </div>
+      </div><!-- /unit-box -->
+
+    </div><!-- /hud-card-body -->
+
+    <!-- ── RIGHT PANEL (kGXuD) 299px ── -->
+    <div class="right-panel">
+
+      <!-- 정비현황판 카드 (7Xm7c) 298.5×265 -->
+      <div class="card wpn-card">
+        <div class="card__header-left">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#767676" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
+          <span class="card__title" style="color:#767676;">정비현황판</span>
+        </div>
+        <div class="wpn-grid">
+          <!-- gridRow1 (Xpy6A): Daily, TCI -->
+          <div class="wpn-grid-row">
+            <!-- miniCard1 (U69se): Daily 43% stroke-width=10, r=36(72/2), innerRadius=0.833 → donut -->
+            <div class="mini-card">
+              <span class="mini-card__label">Daily</span>
+              <div class="mini-gauge-area">
+                <!--
+                  ellipse: w=72 h=72 x=21 y=4 → cx=21+36=57, cy=4+36=40 (in 114×52 viewBox? no, frame fill_container)
+                  실제 area: fill_container width, height=52
+                  SVG viewBox 0 0 114 52 (가정, 반원 형태)
+                  startAngle=180(좌), sweepAngle=-77 (43%)
+                  r=36, strokeWidth=10, innerRadius=0.833
+                  arc: M(cx-r,cy)=(21,40) A(36,36,0,0,1,cx+r,cy)=(93,40) 트랙
+                  43% of 180° = 77.4° → sweepAngle=-77
+                  end: (cx+r·cos(180-77),cy-r·sin(180-77))
+                       = (57+36·cos(103),40-36·sin(103))
+                       = (57-8.1,40-35.1) = (48.9, 4.9)
+                -->
+                <svg width="100%" height="52" viewBox="0 0 114 52">
+                  <path d="M21 40 A36 36 0 0 1 93 40"
+                        fill="none" stroke="#E8E7E4" stroke-width="10" stroke-linecap="round"/>
+                  <path d="M21 40 A36 36 0 0 1 49 5"
+                        fill="none" stroke="#4A7C59" stroke-width="10" stroke-linecap="round"/>
+                </svg>
+                <div class="mini-gauge-val">43%</div>
+              </div>
+            </div>
+            <!-- miniCard2 (YugmU): TCI 68% sweepAngle=-122 -->
+            <div class="mini-card">
+              <span class="mini-card__label">TCI</span>
+              <div class="mini-gauge-area">
+                <!--
+                  68% of 180° = 122.4°
+                  end: (57+36·cos(180-122),40-36·sin(180-122))
+                       = (57+36·cos(58),40-36·sin(58))
+                       = (57+19.1,40-30.5) = (76.1, 9.5)
+                -->
+                <svg width="100%" height="52" viewBox="0 0 114 52">
+                  <path d="M21 40 A36 36 0 0 1 93 40"
+                        fill="none" stroke="#E8E7E4" stroke-width="10" stroke-linecap="round"/>
+                  <path d="M21 40 A36 36 0 0 1 76 10"
+                        fill="none" stroke="#4A7BA8" stroke-width="10" stroke-linecap="round"/>
+                </svg>
+                <div class="mini-gauge-val">68%</div>
+              </div>
+            </div>
+          </div>
+          <!-- gridRow2 (fFOAd): Planned, Unplanned -->
+          <div class="wpn-grid-row">
+            <!-- miniCard3 (Z56Qe): Planned 79% sweepAngle=-142 -->
+            <div class="mini-card">
+              <span class="mini-card__label">Planned</span>
+              <div class="mini-gauge-area">
+                <!--
+                  79% of 180° = 142.2°
+                  end: (57+36·cos(180-142),40-36·sin(180-142))
+                       = (57+36·cos(38),40-36·sin(38))
+                       = (57+28.4,40-22.2) = (85.4, 17.8)
+                -->
+                <svg width="100%" height="52" viewBox="0 0 114 52">
+                  <path d="M21 40 A36 36 0 0 1 93 40"
+                        fill="none" stroke="#E8E7E4" stroke-width="10" stroke-linecap="round"/>
+                  <path d="M21 40 A36 36 0 0 1 85 18"
+                        fill="none" stroke="#B54A4A" stroke-width="10" stroke-linecap="round"/>
+                </svg>
+                <div class="mini-gauge-val">79%</div>
+              </div>
+            </div>
+            <!-- miniCard4 (QoKNx): Unplanned 32% sweepAngle=-58 -->
+            <div class="mini-card">
+              <span class="mini-card__label">Unplanned</span>
+              <div class="mini-gauge-area">
+                <!--
+                  32% of 180° = 57.6°
+                  end: (57+36·cos(180-58),40-36·sin(180-58))
+                       = (57+36·cos(122),40-36·sin(122))
+                       = (57-19.1,40-30.5) = (37.9, 9.5)
+                -->
+                <svg width="100%" height="52" viewBox="0 0 114 52">
+                  <path d="M21 40 A36 36 0 0 1 93 40"
+                        fill="none" stroke="#E8E7E4" stroke-width="10" stroke-linecap="round"/>
+                  <path d="M21 40 A36 36 0 0 1 38 10"
+                        fill="none" stroke="#6B8C5A" stroke-width="10" stroke-linecap="round"/>
+                </svg>
+                <div class="mini-gauge-val">32%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><!-- /wpn-card -->
+
+      <!-- 불가동 현황 카드 (8J0qr) 298.5×265 -->
+      <div class="card downtime-card">
+        <div class="card__header">
+          <div class="card__header-left">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#888899" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            <span class="card__title" style="color:#555566;font-size:18px;">불가동 현황</span>
+          </div>
+          <span class="card__badge card__badge--period">2025.Q1</span>
+        </div>
+        <div class="dt-summary-row">
+          <span class="dt-summary-txt">총 불가동 항공기:</span>
+          <span class="dt-summary-val">22대</span>
+        </div>
+        <!-- barChartArea (3ZYRC) h:140 padding:[0,12] justifyContent:space_around -->
+        <div class="dt-bar-area">
+          <div class="dt-bar-group">
+            <span class="dt-bar-val">3</span>
+            <div class="dt-bar-rect" style="height:36px;background:#B54A4A;"></div>
+            <span class="dt-bar-lbl">비계획</span>
+          </div>
+          <div class="dt-bar-group">
+            <span class="dt-bar-val">2</span>
+            <div class="dt-bar-rect" style="height:24px;background:#4A7C59;"></div>
+            <span class="dt-bar-lbl">계획</span>
+          </div>
+          <div class="dt-bar-group">
+            <span class="dt-bar-val">5</span>
+            <div class="dt-bar-rect" style="height:60px;background:#6BB6B0;"></div>
+            <span class="dt-bar-lbl">주기검사</span>
+          </div>
+          <div class="dt-bar-group">
+            <span class="dt-bar-val">1</span>
+            <div class="dt-bar-rect" style="height:12px;background:#E89B5C;"></div>
+            <span class="dt-bar-lbl">기술</span>
+          </div>
+          <div class="dt-bar-group">
+            <span class="dt-bar-val">1</span>
+            <div class="dt-bar-rect" style="height:12px;background:#5C7C8A;"></div>
+            <span class="dt-bar-lbl">이진</span>
+          </div>
+          <div class="dt-bar-group">
+            <span class="dt-bar-val">10</span>
+            <div class="dt-bar-rect" style="height:120px;background:#C05A3C;"></div>
+            <span class="dt-bar-lbl">자체대기</span>
+          </div>
+        </div>
+      </div><!-- /downtime-card -->
+
+      <!-- 기술지원 게시판 카드 (MiNud) 299×486 -->
+      <div class="card tech-card">
+        <div class="card__header">
+          <div class="card__header-left">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#888888" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+            <span class="card__title" style="color:#666666;">기술지원 게시판</span>
+          </div>
+          <button class="card__more-btn">•••</button>
+        </div>
+        <!-- habitsCard12 (WrD98) height:440 -->
+        <div class="tech-list">
+          <!-- habit1: 완료 (xtr6F) -->
+          <div class="tech-item">
+            <div class="tech-status tech-status--done">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="#fff" stroke-width="2"><polyline points="2,6 4,9 9,2"/></svg>
+            </div>
+            <div class="tech-content">
+              <span class="tech-title">레이더 신호 감도 저하</span>
+              <span class="tech-meta">10 min · Completed 06:45</span>
+            </div>
+          </div>
+          <!-- habit2: 완료 (nDdIz) -->
+          <div class="tech-item">
+            <div class="tech-status tech-status--done">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="#fff" stroke-width="2"><polyline points="2,6 4,9 9,2"/></svg>
+            </div>
+            <div class="tech-content">
+              <span class="tech-title">Engine 노즐 구동부 윤활 누유</span>
+              <span class="tech-meta">8/8 · Done for today</span>
+            </div>
+          </div>
+          <!-- habit3: 진행중 (Yv2UD) -->
+          <div class="tech-item">
+            <div class="tech-status tech-status--in-progress"></div>
+            <div class="tech-content">
+              <span class="tech-title">비행 제어 소프트웨어 오류 코드</span>
+              <span class="tech-meta tech-meta--in-progress">In progress · 18:32 remaining</span>
+            </div>
+          </div>
+          <!-- habit4: 예정 (Ap40f) -->
+          <div class="tech-item">
+            <div class="tech-status tech-status--pending"></div>
+            <div class="tech-content">
+              <span class="tech-title tech-title--pending">Read 20 pages</span>
+              <span class="tech-meta">Scheduled for 20:00</span>
+            </div>
+          </div>
+          <!-- habit5 (SlYeP) -->
+          <div class="tech-item">
+            <div class="tech-status tech-status--pending"></div>
+            <div class="tech-content">
+              <span class="tech-title tech-title--pending">Read 20 pages</span>
+              <span class="tech-meta">Scheduled for 20:00</span>
+            </div>
+          </div>
+          <!-- habit6 (kopBl) -->
+          <div class="tech-item">
+            <div class="tech-status tech-status--pending"></div>
+            <div class="tech-content">
+              <span class="tech-title tech-title--pending">Read 20 pages</span>
+              <span class="tech-meta">Scheduled for 20:00</span>
+            </div>
+          </div>
+        </div>
+      </div><!-- /tech-card -->
+
+    </div><!-- /right-panel -->
+
+  </div><!-- /center-area -->
+
+  <!-- ════════════════════════════════════
+       BOTTOM TAB BAR (XZkXY) — 48px
+  ════════════════════════════════════ -->
+  <div class="bottombar">
+    <!-- btab1 (Z1WHg) ARMCO, border-right -->
+    <button class="bottombar__tab bottombar__tab--right-border">ARMCO</button>
+    <!-- btab2 (kHg5X) LINK, ACTIVE, border-bottom:2 #4A7C59 -->
+    <button class="bottombar__tab bottombar__tab--active">LINK</button>
+    <!-- btab3 (v5bMo) SAFE, border-right -->
+    <button class="bottombar__tab bottombar__tab--right-border">SAFE</button>
+    <!-- btab4 (qEIQz) JAM -->
+    <button class="bottombar__tab">JAM</button>
+  </div>
+
+  <!-- ════════════════════════════════════
+       SUBMENU POPOVER (Rnv3c) x:819 y:48
+       cornerRadius:[0,8,8,8]
+  ════════════════════════════════════ -->
+  <div class="submenu-popover">
+    <!-- col1 (uCKkR) width:180 -->
+    <div class="submenu-col submenu-col--1">
+      <!-- col1_header (5fHXD) -->
+      <div class="submenu-header">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#767676" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+        <span class="submenu-header__txt">정비지원</span>
+      </div>
+      <div class="submenu-hd-divider"></div>
+      <!-- FUFnN active: fill:#EEF2FF -->
+      <div class="submenu-item submenu-item--active">
+        <div class="submenu-item__left">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4A7C59" stroke-width="2"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="12" y1="9" x2="12" y2="15"/></svg>
+          <span class="submenu-item__txt submenu-item__txt--active">정비 이력 조회</span>
+        </div>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4A7C59" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <!-- ip2kg -->
+      <div class="submenu-item">
+        <div class="submenu-item__left">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#555555" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <span class="submenu-item__txt">정비 일정 관리</span>
+        </div>
+      </div>
+      <!-- GEKXi -->
+      <div class="submenu-item">
+        <div class="submenu-item__left">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#555555" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <span class="submenu-item__txt">결함 보고서</span>
+        </div>
+      </div>
+      <!-- ENH75 -->
+      <div class="submenu-item">
+        <div class="submenu-item__left">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#555555" stroke-width="2"><path d="M16.5 9.4l-9-5.19M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+          <span class="submenu-item__txt">부품 청구 현황</span>
+        </div>
+      </div>
+    </div><!-- /col1 -->
+
+    <!-- 세로 구분선 (dIrLf) -->
+    <div class="submenu-divider"></div>
+
+    <!-- col2 (aCvIb) width:200 -->
+    <div class="submenu-col submenu-col--2">
+      <!-- col2_header (apPyp) -->
+      <div class="submenu-header">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#767676" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        <span class="submenu-header__txt">기술문서</span>
+      </div>
+      <div class="submenu-hd-divider"></div>
+      <!-- mWNBH: 기술 교범 (TM) + NEW 배지 -->
+      <div class="submenu-item">
+        <div class="submenu-item__left">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#555555" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <span class="submenu-item__txt">기술 교범 (TM)</span>
+        </div>
+        <div class="submenu-badge"><span class="submenu-badge__txt">NEW</span></div>
+      </div>
+      <!-- ztXBk -->
+      <div class="submenu-item">
+        <div class="submenu-item__left">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#555555" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="2" x2="9" y2="4"/><line x1="15" y1="2" x2="15" y2="4"/></svg>
+          <span class="submenu-item__txt">시스템 사양서</span>
+        </div>
+      </div>
+      <!-- 6lt1p -->
+      <div class="submenu-item">
+        <div class="submenu-item__left">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#555555" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+          <span class="submenu-item__txt">정비 교육 영상</span>
+        </div>
+      </div>
+      <!-- mFlN1 -->
+      <div class="submenu-item">
+        <div class="submenu-item__left">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#555555" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span class="submenu-item__txt">문서 다운로드</span>
+        </div>
+      </div>
+    </div><!-- /col2 -->
+  </div><!-- /submenu-popover -->
+
+</div><!-- /lightboard -->
+
+<script>
+/* 탑바 탭 전환 */
+document.querySelectorAll('.topbar__tab:not(.topbar__tab--menu-icon)').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.topbar__tab').forEach(t => t.classList.remove('topbar__tab--active'));
+    tab.classList.add('topbar__tab--active');
+  });
+});
+
+/* 바텀 탭 전환 */
+document.querySelectorAll('.bottombar__tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.bottombar__tab').forEach(t => t.classList.remove('bottombar__tab--active'));
+    tab.classList.add('bottombar__tab--active');
+  });
+});
+
+/* 테마 스위치 */
+const track = document.querySelector('.theme-switch__track');
+const thumb  = document.querySelector('.theme-switch__thumb');
+const board  = document.getElementById('lightBoard');
+let dark = false;
+track.addEventListener('click', () => {
+  dark = !dark;
+  board.setAttribute('data-theme', dark ? 'dark' : 'light');
+  thumb.style.transform = dark ? 'translateX(30px)' : 'translateX(0)';
+  track.style.background = dark ? '#4A7C59' : '';
+});
+
+/* 서브메뉴 팝오버 토글 (기술지원 탭 클릭) */
+const submenu = document.querySelector('.submenu-popover');
+document.querySelectorAll('.topbar__tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    submenu.style.display = tab.textContent.trim() === '기술지원' ? 'flex' : 'none';
+  });
+});
+document.addEventListener('click', e => {
+  if (!e.target.closest('.topbar__tab') && !e.target.closest('.submenu-popover')) {
+    submenu.style.display = 'none';
+  }
+});
+</script>
+</body>
+</html>
