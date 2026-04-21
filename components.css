@@ -83,40 +83,72 @@ body {
   gap: var(--sp-lg);
 }
 
-/* ── GaugeCard (H77ue / 300O0) 298.5 × 265 ── */
+/* ── GaugeCard (H77ue / 300O0) 298.5 × 265 — dashboard.html 버전 ── */
 .gauge-card {
   width: 298.5px; height: 265px;
-  padding: 16px 14px;
+  padding: 16px;
   display: flex; flex-direction: column; gap: 12px;
   flex-shrink: 0;
 }
-.gauge-svg-wrap {
-  width: 100%; height: 133px;
+.gauge-svg-area {
+  width: 277px; height: 133px;
   position: relative; flex-shrink: 0;
 }
-.gauge-svg-wrap svg { position: absolute; left: 50%; transform: translateX(-50%); }
 .gauge-center-val {
-  position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
-  width: 100px; text-align: center;
-  font-size: 21px; font-weight: 700; color: var(--color-text-primary);
+  position: absolute;
+  left: 89px; top: 100px;
+  width: 100px; height: 38px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 21px; font-weight: 700;
+  color: var(--color-text-primary);
 }
-.gc2-subrow {
-  display: flex; flex-direction: column; gap: 5px;
-  align-items: flex-end; width: 100%;
+.gauge-needle {
+  position: absolute;
+  left: 138px; top: 90px;
+  width: 50px; height: 3px;
+  background: #333333;
+  border-radius: 2px;
+  transform-origin: 0 50%;
+  transform: rotate(54deg);
 }
-.gc2-subrow-top {
-  display: flex; justify-content: space-between; align-items: center; width: 180px;
+.gauge-needle-dot {
+  position: absolute;
+  left: 129px; top: 81px;
+  width: 18px; height: 18px;
+  background: #333333;
+  border-radius: 50%;
+}
+.gc2-rows {
+  display: flex; justify-content: center;
+  gap: 8px; width: 100%;
+}
+.gc2-row {
+  display: flex; flex-direction: column;
+  gap: 5px; justify-content: flex-end;
+}
+.gc2-row-top {
+  display: flex; align-items: center; justify-content: space-between;
+  width: 180px;
 }
 .gc2-label { font-size: 14px; font-weight: 700; color: var(--color-text-dim); }
 .gc2-val   { font-size: 21px; font-weight: 700; color: var(--color-accent-blue); }
-.progress-track {
-  width: 180px; height: 6px; border-radius: 3px;
-  background: var(--color-bg-card); position: relative;
+.gc2-track {
+  position: relative;
+  width: 180px; height: 6px;
 }
-.progress-fill {
-  height: 6px; border-radius: 3px;
+.gc2-bg {
+  position: absolute;
+  left: 0; top: 0;
+  width: 180px; height: 6px;
+  background: var(--color-bg-card);
+  border-radius: 3px;
+}
+.gc2-fg {
+  position: absolute;
+  left: 0; top: 0;
+  height: 6px;
   background: var(--color-accent-teal);
-  position: absolute; top: 0; left: 0;
+  border-radius: 3px;
 }
 
 /* ── TodoListCard (FcvzW / OTwch) 298.5 × 265 ── */
@@ -142,18 +174,20 @@ body {
 .todo-text-done { font-size: 14px; color: var(--color-text-subtle); flex: 1; }
 .todo-text-pend { font-size: 14px; font-weight: 600; color: var(--color-text-primary); flex: 1; }
 
-/* ── WpnSection (To6IZ / 7tiqo) 298.5 × 265 ── */
+/* ── WpnSection (To6IZ / 7tiqo) 298.5 × 265 — dashboard.html 버전 ── */
 .wpn-card {
   width: 298.5px; height: 265px;
-  padding: 14px;
+  padding: 16px;
   display: flex; flex-direction: column; gap: 14px;
   flex-shrink: 0;
 }
-.wpn-header { display: flex; align-items: center; gap: 6px; }
-.wpn-title  { font-size: 18px; font-weight: 600; color: var(--color-text-dim); letter-spacing: 1px; }
-.wpn-grid   { display: flex; flex-direction: column; gap: 8px; flex: 1; }
-.wpn-row    { display: flex; gap: 8px; flex: 1; }
-.mini-card  {
+.wpn-grid {
+  display: flex; flex-direction: column; gap: 8px; flex: 1;
+}
+.wpn-grid-row {
+  display: flex; gap: 8px; flex: 1; width: 100%;
+}
+.mini-card {
   flex: 1; border-radius: var(--r-lg);
   background: var(--color-bg-surface);
   border: 1px solid rgba(0,0,0,.08);
@@ -162,12 +196,21 @@ body {
   transition: background .15s;
 }
 .mini-card:hover { background: var(--color-bg-hover); }
-.mini-label { font-size: 14px; font-weight: 600; color: var(--color-text-dim); letter-spacing: 1px; }
-.mini-gauge { width: 100%; height: 52px; position: relative; }
-.mini-gauge svg { position: absolute; left: 50%; transform: translateX(-50%); }
+.mini-card__label {
+  font-size: 14px; font-weight: 600;
+  color: var(--color-text-dim); letter-spacing: 1px;
+}
+.mini-gauge-area {
+  width: 100%; height: 52px;
+  position: relative;
+}
 .mini-gauge-val {
-  position: absolute; top: 30px; left: 50%; transform: translateX(-50%);
-  font-size: 12px; font-weight: 700; color: var(--color-text-primary); white-space: nowrap;
+  position: absolute;
+  left: 0; top: 40px;
+  width: 100%;
+  text-align: center;
+  font-size: 12px; font-weight: 700;
+  color: var(--color-text-primary);
 }
 
 /* ── DowntimeBarCard (VZcr4 / uOaU7) 298.5 × 265 ── */
@@ -513,9 +556,9 @@ body {
 [data-theme="dark"] .unit-card:hover  { background: var(--color-bg-unit-card); }
 [data-theme="dark"] .unit-card__value { color: var(--color-text-secondary); }
 
-/* ── Gauge: 다크에서 info 계열 강조 ── */
+/* ── Gauge: 다크에서 info 계열 강조 / track 배경은 input 톤 ── */
 [data-theme="dark"] .gc2-val          { color: var(--color-info); }
-[data-theme="dark"] .progress-track   { background: var(--color-bg-input); }
+[data-theme="dark"] .gc2-bg           { background: var(--color-bg-input); }
 
 /* ── Todo: 다크에서는 success-dim 배경에 mint 강조 ── */
 [data-theme="dark"] .todo-badge       { color: var(--color-mc); }
