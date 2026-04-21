@@ -2,7 +2,8 @@
 <!--
   KF-21 Dashboard — lightBoard (DzWKp)
   ─────────────────────────────────────
-  • 외부 의존성: Google Fonts CDN, tokens.css, style.css (동일 경로)
+  • 외부 의존성: Google Fonts CDN, tokens.css, style.css, component-kf21-lightboard.css (동일 경로)
+  • 로드 순서: tokens.css → style.css → component-kf21-lightboard.css
   • 1920×1200 기준
   • data-theme="dark" 속성으로 다크 모드 전환 가능
 -->
@@ -15,6 +16,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&family=Noto+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="tokens.css">
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="component-kf21-lightboard.css">
 </head>
 <body style="margin:0;background:#e0e0e0;padding:0;">
 

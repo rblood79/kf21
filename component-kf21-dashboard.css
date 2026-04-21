@@ -1,18 +1,20 @@
 /**
  * KF-21 Dashboard — component-kf21-dashboard.css
  *
- * component-kf21-dashboard.html 전용 컴포넌트 스타일시트.
- * 모든 CSS 변수는 tokens.css 에 정의되어 있습니다.
+ * component-kf21-dashboard.html (qSi6K) 전용 컴포넌트 스타일시트.
+ * 공통 규칙(reset + card shell)은 style.css 에 있습니다.
+ *
+ * 의존성: tokens.css, style.css
  *
  * 사용법:
  *   <link rel="stylesheet" href="tokens.css">
+ *   <link rel="stylesheet" href="style.css">
  *   <link rel="stylesheet" href="component-kf21-dashboard.css">
  */
 
 /* ══════════════════════════════════════════════
-   RESET & BASE
+   BODY
 ══════════════════════════════════════════════ */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 body {
   font-family: var(--ff-base);
   font-size: 14px;
@@ -20,7 +22,6 @@ body {
   color: var(--color-text-primary);
   -webkit-font-smoothing: antialiased;
 }
-svg { display: block; flex-shrink: 0; }
 
 /* ══════════════════════════════════════════════
    COMPONENT ROOT  (qSi6K — 1920 × 1446)
@@ -35,58 +36,6 @@ svg { display: block; flex-shrink: 0; }
   flex-direction: column;
   gap: var(--sp-lg);
 }
-
-/* ══════════════════════════════════════════════
-   SHARED CARD SHELL
-══════════════════════════════════════════════ */
-.card {
-  border-radius: var(--r-2xl);
-  border: 1px solid var(--color-border-card);
-  background: var(--gradient-card);
-  box-shadow: var(--shadow-card);
-  transition: box-shadow .2s ease, transform .15s ease;
-}
-.card:hover {
-  box-shadow: 0 4px 16px rgba(0,0,0,.12), 0 8px 24px rgba(0,0,0,.08);
-  transform: translateY(-1px);
-}
-
-/* header pattern shared by most cards */
-.card__header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-}
-.card__header-left {
-  display: flex;
-  align-items: center;
-  gap: var(--sp-sm);
-}
-.card__title {
-  font-size: 18px;
-  font-weight: 600;
-  letter-spacing: 1px;
-  color: var(--color-text-secondary);
-}
-.card__badge {
-  padding: var(--sp-xs) var(--sp-sm);
-  border-radius: var(--r-sm);
-  font-size: 14px;
-  font-weight: 700;
-}
-.card__more-btn {
-  padding: var(--sp-xs) var(--sp-sm);
-  border-radius: var(--r-sm);
-  background: #F0F2F7;
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--color-text-tertiary);
-  cursor: pointer;
-  transition: background .15s;
-}
-.card__more-btn:hover { background: var(--color-border-card); }
-.card__divider { height: 1px; background: var(--color-border-divider); flex-shrink: 0; }
 
 /* ══════════════════════════════════════════════
    ROW 0 — unit card strip (YyElN)
