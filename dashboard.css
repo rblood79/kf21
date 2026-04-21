@@ -185,88 +185,10 @@
   flex-shrink: 0;
 }
 
-/* ── Gauge Card (가동률) ── */
-.gauge-card {
-  width: 298.5px;
-  height: 265px;
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-.gauge-svg-area {
-  width: 277px;
-  height: 133px;
-  position: relative;
-  flex-shrink: 0;
-}
-.gauge-center-val {
-  position: absolute;
-  left: 89px; top: 100px;
-  width: 100px; height: 38px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 21px;
-  font-weight: 700;
-  color: var(--color-text-primary);
-}
-.gauge-needle {
-  position: absolute;
-  left: 138px; top: 90px;
-  width: 50px; height: 3px;
-  background: #333333;
-  border-radius: 2px;
-  transform-origin: 0 50%;
-  transform: rotate(-54deg);
-}
-.gauge-needle-dot {
-  position: absolute;
-  left: 129px; top: 81px;
-  width: 18px; height: 18px;
-  background: #333333;
-  border-radius: 50%;
-}
-.gc2-rows {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  width: 100%;
-}
-.gc2-row {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  justify-content: flex-end;
-}
-.gc2-row-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 180px;
-}
-.gc2-label { font-size: 14px; font-weight: 700; color: var(--color-text-dim); }
-.gc2-val   { font-size: 21px; font-weight: 700; color: var(--color-accent-blue); }
-.gc2-track {
-  position: relative;
-  width: 180px; height: 6px;
-}
-.gc2-bg {
-  position: absolute;
-  left: 0; top: 0;
-  width: 180px; height: 6px;
-  background: var(--color-bg-card);
-  border-radius: 3px;
-}
-.gc2-fg {
-  position: absolute;
-  left: 0; top: 0;
-  height: 6px;
-  background: var(--color-accent-teal);
-  border-radius: 3px;
-}
+/* ── Gauge Card: components.css 공유. needle 방향만 override ── */
+.gauge-needle { transform: rotate(-54deg); }
 
-/* ── Inventory Card (작업장 재고, 488px) ── */
+/* ── Inventory Card (작업장 재고) — components.css 와 크기 다름 ── */
 .inventory-card {
   width: 299px;
   height: 488px;
@@ -275,125 +197,7 @@
   flex-direction: column;
   gap: 12px;
 }
-.inv-section {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.inv-sub-label {
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--color-text-secondary);
-  letter-spacing: 1px;
-}
-.inv-legend {
-  display: flex;
-  justify-content: flex-end;
-  gap: 12px;
-  width: 100%;
-}
-.inv-leg-item {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-.inv-leg-dot {
-  width: 8px; height: 8px;
-  border-radius: 2px;
-}
-.inv-leg-txt { font-size: 11px; color: var(--color-text-secondary); }
-.inv-bar-chart {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-around;
-  gap: 4px;
-  height: 130px;
-  overflow: hidden;
-}
-.inv-bar-col {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
-  flex: 1;
-  justify-content: flex-end;
-}
-.inv-bar-seg { width: 10px; border-radius: 2px 2px 0 0; }
-.inv-bar-seg:last-of-type { border-radius: 0; }
-.inv-donut-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-}
-.inv-pie-legend {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.inv-pie-leg-item {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-.inv-pie-leg-txt { font-size: 14px; color: var(--color-text-secondary); }
-.inv-pie-leg-val { font-size: 14px; font-weight: 700; color: var(--color-text-secondary); }
-
-/* ── Shortcut Card (바로가기, 265px) ── */
-.shortcut-card {
-  width: 298.5px;
-  height: 265px;
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-.shortcut-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  flex: 1;
-}
-.shortcut-row {
-  display: flex;
-  gap: 10px;
-  flex: 1;
-}
-.shortcut-btn {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-  flex: 1;
-  border-radius: 12px;
-  background: var(--color-bg-surface);
-  border: 1px solid rgba(0,0,0,.08);
-  cursor: pointer;
-  transition: background .15s, box-shadow .15s, transform .1s;
-  padding: 8px;
-  font-family: var(--ff-base);
-}
-.shortcut-btn:hover {
-  background: var(--color-bg-hover);
-  box-shadow: 0 2px 8px rgba(0,0,0,.1);
-  transform: scale(1.02);
-}
-.shortcut-btn:active { transform: scale(.98); }
-.shortcut-btn:focus-visible {
-  outline: 2px solid var(--color-success);
-  outline-offset: 2px;
-}
-.shortcut-btn__title {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--color-text-primary);
-}
-.shortcut-btn__sub {
-  font-size: 14px;
-  font-weight: 400;
-  color: var(--color-text-tertiary);
-}
+/* inv-section, inv-*, shortcut-* 나머지는 components.css 사용 */
 
 /* ══════════════════════════════════════════════
    HUD CARD BODY  (center, fill)
@@ -554,61 +358,9 @@
   flex-shrink: 0;
 }
 
-/* ── 정비현황판 Card (265px) ── */
-.wpn-card {
-  width: 298.5px;
-  height: 265px;
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-.wpn-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  flex: 1;
-}
-.wpn-grid-row {
-  display: flex;
-  gap: 8px;
-  flex: 1;
-  width: 100%;
-}
-.mini-card {
-  flex: 1;
-  border-radius: 8px;
-  background: var(--color-bg-surface);
-  border: 1px solid rgba(0,0,0,.08);
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  transition: background .15s;
-}
-.mini-card:hover { background: var(--color-bg-hover); }
-.mini-card__label {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--color-text-dim);
-  letter-spacing: 1px;
-}
-.mini-gauge-area {
-  width: 100%;
-  height: 52px;
-  position: relative;
-}
-.mini-gauge-val {
-  position: absolute;
-  left: 0; top: 40px;
-  width: 100%;
-  text-align: center;
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--color-text-primary);
-}
+/* ── 정비현황판/불가동/기술지원: components.css 공유 ── */
 
-/* ── 불가동 현황 Card (265px) ── */
+/* 불가동 현황 Card — padding이 components.css(20px 18px)와 달라 override */
 .downtime-card {
   width: 298.5px;
   height: 265px;
@@ -618,36 +370,8 @@
   justify-content: space-between;
   gap: 16px;
 }
-.dt-summary-row {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  width: 100%;
-}
-.dt-summary-txt { font-size: 16px; font-weight: 400; color: var(--color-text-secondary); }
-.dt-summary-val { font-size: 18px; font-weight: 700; color: var(--color-text-primary); }
-.dt-bar-area {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-around;
-  gap: 8px;
-  height: 140px;
-  padding: 0 12px;
-}
-.dt-bar-group {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 2px;
-  height: 100%;
-  width: 24px;
-}
-.dt-bar-val  { font-size: 12px; font-weight: 700; color: var(--color-text-primary); }
-.dt-bar-rect { width: 10px; border-radius: 2px 2px 0 0; }
-.dt-bar-lbl  { font-size: 11px; color: var(--color-text-muted); white-space: nowrap; }
 
-/* ── 기술지원 게시판 Card (486px) ── */
+/* 기술지원 게시판 Card — 높이가 components.css(.gauge-tall 546px)와 다름 */
 .tech-card {
   width: 299px;
   height: 486px;
@@ -656,40 +380,6 @@
   flex-direction: column;
   gap: 12px;
 }
-.tech-list { display: flex; flex-direction: column; width: 100%; }
-.tech-item {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 16px 0;
-  width: 100%;
-  border-bottom: 1px solid var(--color-border-subtle);
-  transition: background .15s;
-}
-.tech-item:last-child { border-bottom: none; }
-.tech-item:hover { background: rgba(0,0,0,.02); margin: 0 -4px; padding-left: 4px; padding-right: 4px; }
-.tech-status {
-  width: 16px; height: 16px;
-  border-radius: 12px;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.tech-status--done        { background: #aaaaaa; }
-.tech-status--in-progress { border: 2px solid var(--color-accent-orange); background: transparent; }
-.tech-status--pending     { border: 1.5px solid #E4E4E7; background: transparent; }
-.tech-content {
-  display: flex; flex-direction: column; gap: 2px;
-  flex: 1; min-width: 0;
-}
-.tech-title {
-  font-size: 14px; font-weight: 600; color: var(--color-text-secondary);
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-}
-.tech-title--pending { color: var(--color-text-dim); }
-.tech-meta { font-family: var(--ff-mono); font-size: 12px; color: var(--color-text-dim); }
-.tech-meta--in-progress { font-weight: 500; color: #71717A; }
 
 /* ══════════════════════════════════════════════
    BOTTOM TAB BAR  (48px)
@@ -792,20 +482,14 @@
 [data-theme="dark"] .submenu-item--active { background: var(--color-bg-input); }
 [data-theme="dark"] .submenu-badge__txt   { color: var(--color-info); }
 
-/* ── Mini card: 카드 내부 서브 서페이스는 input bg ── */
-[data-theme="dark"] .mini-card             { background: var(--color-bg-input); }
+/* ── Mini card: components.css 공유, 오버라이드 불필요 ── */
 
 /* ── Unit card item: 고유 서페이스 + tertiary lbl ── */
 [data-theme="dark"] .unit-card-item        { background: var(--color-bg-unit-card); border-color: var(--color-border-card); }
 [data-theme="dark"] .unit-card-item__lbl   { color: var(--color-text-tertiary); }
 [data-theme="dark"] .unit-card-item__num   { color: var(--color-text-primary); }
 
-/* ── Inventory: secondary 대신 tertiary 톤 ── */
-[data-theme="dark"] .inv-sub-label         { color: var(--color-text-tertiary); }
-
-/* ── Shortcut: 카드 내부 서브 서페이스는 input bg ── */
-[data-theme="dark"] .shortcut-btn          { background: var(--color-bg-input); }
-[data-theme="dark"] .shortcut-btn__sub     { color: var(--color-text-muted); }
+/* ── Inventory / Shortcut: components.css dark 오버라이드 공유 ── */
 
 /* ── Gauge (half-donut): 다크에서 info 계열 강조 ── */
 [data-theme="dark"] .gauge__track          { stroke: var(--color-bg-input); }

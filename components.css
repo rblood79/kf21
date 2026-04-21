@@ -254,7 +254,7 @@ body {
 .chart-area { width: 100%; height: 137px; position: relative; overflow: hidden; flex-shrink: 0; }
 .x-axis     { display: flex; justify-content: space-between; width: 100%; }
 .x-axis span { font-size: 14px; color: var(--color-text-muted); }
-.line-legend { display: flex; align-items: center; gap: 16px; }
+.line-legend { display: flex; align-items: center; gap: 16px; justify-content: center; }
 .legend-item { display: flex; align-items: center; gap: 6px; }
 .legend-line { width: 16px; height: 2px; border-radius: 1px; }
 .legend-txt  { font-size: 16px; color: var(--color-text-muted); }
@@ -326,7 +326,7 @@ body {
 .inv-section {
   border-radius: var(--r-lg); padding: 10px 12px;
   display: flex; flex-direction: column; gap: 10px;
-  height: 226px; flex-shrink: 0;
+   flex-shrink: 0;
 }
 .inv-sub-label { font-size: 13px; font-weight: 700; color: var(--color-text-secondary); letter-spacing: 1px; }
 .inv-bar-area  {
@@ -341,6 +341,9 @@ body {
 .inv-leg-txt   { font-size: 12px; color: var(--color-text-secondary); }
 .inv-donut-row { display: flex; align-items: center; gap: 16px; flex: 1; justify-content: center; }
 .inv-pie-legend{ display: flex; flex-direction: column; gap: 8px; }
+.inv-pie-leg-item { display: flex; flex-direction: row; align-items: center; gap: 6px; }
+.inv-pie-leg-txt  { font-size: 14px; color: var(--color-text-secondary); }
+.inv-pie-leg-val  { font-size: 14px; font-weight: 700; color: var(--color-text-secondary); }
 
 /* ══════════════════════════════════════════════
    ROW 2 — shortcuts / calendar / stacked bar
