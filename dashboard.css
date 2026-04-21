@@ -218,7 +218,7 @@
   background: #333333;
   border-radius: 2px;
   transform-origin: 0 50%;
-  transform: rotate(54deg);
+  transform: rotate(-54deg);
 }
 .gauge-needle-dot {
   position: absolute;
@@ -308,6 +308,7 @@
   justify-content: space-around;
   gap: 4px;
   height: 130px;
+  overflow: hidden;
 }
 .inv-bar-col {
   display: flex;
