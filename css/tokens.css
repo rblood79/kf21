@@ -23,6 +23,25 @@
  */
 
 /* ═══════════════════════════════════════════════
+   LOCAL FONTS — NanumBarunGothic (subset, woff2)
+   경로: css/tokens.css 기준 → ../fonts/*.woff2
+═══════════════════════════════════════════════ */
+@font-face {
+  font-family: 'NanumBarunGothic';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('../fonts/NanumBarunGothicLightSubset.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'NanumBarunGothic';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../fonts/NanumBarunGothicBoldSubset.woff2') format('woff2');
+}
+
+/* ═══════════════════════════════════════════════
    LIGHT MODE (default)
 ═══════════════════════════════════════════════ */
 :root {
@@ -108,7 +127,7 @@
   --r-full : 9999px;
 
   /* ── Typography / Font Family ── */
-  --ff-base      : 'Noto Sans KR', 'Noto Sans', sans-serif;
+  --ff-base      : 'NanumBarunGothic', 'Noto Sans KR', 'Noto Sans', sans-serif;
   --ff-secondary : 'Geist', 'Inter', sans-serif;
   --ff-mono      : 'Inter', monospace;
 
