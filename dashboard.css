@@ -74,7 +74,7 @@
   letter-spacing: 2px;
   color: var(--color-text-dim);
   cursor: pointer;
-  transition: color .15s;
+  transition: color 0.15s;
   white-space: nowrap;
   position: relative;
   font-family: var(--ff-base);
@@ -101,7 +101,7 @@
 .topbar__user-txt {
   font-size: 14px;
   font-weight: 500;
-  color: #6B6B80;
+  color: #6b6b80;
   letter-spacing: 1px;
   white-space: nowrap;
 }
@@ -109,48 +109,58 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  background: #1A1A2E;
-  color: #FFFFFF;
+  background: #1a1a2e;
+  color: #ffffff;
   border-radius: 25px;
   padding: 6px 12px;
   font-size: 14px;
   font-weight: 600;
   letter-spacing: 1px;
   white-space: nowrap;
-  transition: opacity .15s;
+  transition: opacity 0.15s;
   font-family: var(--ff-base);
 }
-.topbar__ai-btn:hover { opacity: .85; }
+.topbar__ai-btn:hover {
+  opacity: 0.85;
+}
 
 /* 테마 스위치 스타일은 style.css (공통) 에 있습니다 */
 
 /* 탑바 하단 경계선 분리 (활성 탭 구간 양옆) */
 .topbar__border-left {
   position: absolute;
-  left: 0; bottom: 0;
-  width: 820px; height: 1px;
+  left: 0;
+  bottom: 0;
+  width: 820px;
+  height: 1px;
   background: var(--color-border-divider);
   pointer-events: none;
 }
 .topbar__border-right {
   position: absolute;
-  right: 0; bottom: 0;
-  width: 1008px; height: 1px;
+  right: 0;
+  bottom: 0;
+  width: 1008px;
+  height: 1px;
   background: var(--color-border-divider);
   pointer-events: none;
 }
 .topbar__tab-border-l {
   position: absolute;
-  left: 819px; top: 0;
-  width: 1px; height: 48px;
+  left: 819px;
+  top: 0;
+  width: 1px;
+  height: 48px;
   background: var(--color-border-divider);
   z-index: 1;
   pointer-events: none;
 }
 .topbar__tab-border-r {
   position: absolute;
-  left: 912px; top: 0;
-  width: 1px; height: 48px;
+  left: 912px;
+  top: 0;
+  width: 1px;
+  height: 48px;
   background: var(--color-border-divider);
   z-index: 1;
   pointer-events: none;
@@ -169,9 +179,18 @@
 /* ══════════════════════════════════════════════
    CARD BADGE  (lightboard modifiers — 공통 shell 확장)
 ══════════════════════════════════════════════ */
-.card__badge--live    { background: var(--color-success-dim); color: var(--color-mc); }
-.card__badge--more    { background: var(--color-bg-card); color: var(--color-text-tertiary); }
-.card__badge--period  { background: var(--color-bg-input); color: var(--color-text-secondary); }
+.card__badge--live {
+  background: var(--color-success-dim);
+  color: var(--color-mc);
+}
+.card__badge--more {
+  background: var(--color-bg-card);
+  color: var(--color-text-tertiary);
+}
+.card__badge--period {
+  background: var(--color-bg-input);
+  color: var(--color-text-secondary);
+}
 
 /* ══════════════════════════════════════════════
    LEFT PANEL  (299px)
@@ -186,7 +205,9 @@
 }
 
 /* ── Gauge Card: components.css 공유. needle 방향만 override ── */
-.gauge-needle { transform: rotate(-54deg); }
+.gauge-needle {
+  transform: rotate(-54deg);
+}
 
 /* ── Inventory Card (작업장 재고) — components.css 와 크기 다름 ── */
 .inventory-card {
@@ -216,16 +237,20 @@
 /* 수직/수평 분할선 */
 .hud-line-v {
   position: absolute;
-  left: 612px; top: 0;
-  width: 1px; height: 100%;
-  background: rgba(36,53,74,.1);
+  left: 615px;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  background: rgba(36, 53, 74, 0.1);
   pointer-events: none;
 }
 .hud-line-h {
   position: absolute;
-  left: 0; top: 590px;
-  width: 100%; height: 1px;
-  background: rgba(36,53,74,.1);
+  left: 0;
+  top: 590px;
+  width: 100%;
+  height: 1px;
+  background: rgba(36, 53, 74, 0.1);
   pointer-events: none;
 }
 
@@ -239,8 +264,10 @@
 /* KF-21 기체 이미지 */
 .hud-content {
   position: absolute;
-  left: 30px; top: 46px;
-  width: 1162px; height: 1018px;
+  left: 30px;
+  top: 46px;
+  width: 1162px;
+  height: 1018px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -249,6 +276,7 @@
 .hud-content__img-main {
   width: 800px;
   height: 294px;
+  padding-right: 18px;
   object-fit: contain;
 }
 .hud-content__img-side {
@@ -260,14 +288,15 @@
 /* 상태 헤더 (좌상) */
 .hud-status-header {
   position: absolute;
-  left: 20px; top: 20px;
+  left: 20px;
+  top: 20px;
   display: flex;
   align-items: center;
   gap: 8px;
 }
 .hud-status-badge {
   border-radius: 4px;
-  background: rgba(74,124,89,.125);
+  background: rgba(74, 124, 89, 0.125);
   padding: 4px 8px;
 }
 .hud-status-badge__txt {
@@ -286,16 +315,18 @@
 /* KF-21 UNIT 카드 (좌하) */
 .unit-box {
   position: absolute;
-  left: 39px; top: 890px;
+  left: 24px;
+  top: 890px;
   border-radius: 12px;
-  background: rgba(0,0,0,0.08);
-  border: 1px solid rgba(224,227,235,.12);
+  background: rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(224, 227, 235, 0.12);
   padding: 16px;
   display: flex;
   flex-direction: column;
   gap: 8px;
   align-items: center;
   justify-content: center;
+  width: calc(100% - 48px);
 }
 .unit-box__title {
   font-size: 18px;
@@ -306,7 +337,11 @@
 }
 .unit-grid {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  width: 100%;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 }
 .unit-grid-row {
   display: flex;
@@ -321,12 +356,16 @@
   padding: 10px;
   background: var(--color-bg-white);
   border: 1px solid var(--color-border-divider);
-  transition: background .15s;
+  margin-left: -1px;
+  margin-top: -1px;
+  transition: background 0.15s;
 }
-.unit-card-item:hover { background: #F5F8FF; }
+.unit-card-item:hover {
+  background: #f5f8ff;
+}
 .unit-card-item--nmc {
   background: #24354a;
-  border-color: rgba(239,68,68,.38);
+  border-color: rgba(239, 68, 68, 0.38);
 }
 .unit-card-item__lbl {
   font-size: 12px;
@@ -334,17 +373,30 @@
   color: var(--color-text-dim);
   letter-spacing: 1px;
 }
-.unit-card-item__lbl--nmc { color: #C5D8E8; }
+.unit-card-item__lbl--nmc {
+  color: #c5d8e8;
+}
 .unit-card-item__num {
   font-size: 16px;
   font-weight: 700;
   color: #444455;
 }
-.unit-card-item__num--nmc { color: #DDDDEE; }
-.unit-card-item__status { font-size: 16px; font-weight: 700; }
-.unit-card-item__status--mc  { color: var(--color-success-static); }
-.unit-card-item__status--nmc { color: #FF6B6B; }
-.unit-card-item__status--pmc { color: var(--color-info); }
+.unit-card-item__num--nmc {
+  color: #ddddee;
+}
+.unit-card-item__status {
+  font-size: 16px;
+  font-weight: 700;
+}
+.unit-card-item__status--mc {
+  color: var(--color-success-static);
+}
+.unit-card-item__status--nmc {
+  color: #ff6b6b;
+}
+.unit-card-item__status--pmc {
+  color: var(--color-info);
+}
 
 /* ══════════════════════════════════════════════
    RIGHT PANEL  (299px)
@@ -386,8 +438,10 @@
 ══════════════════════════════════════════════ */
 .bottombar {
   position: absolute;
-  left: 0; bottom: 0;
-  width: 100%; height: 48px;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 48px;
   background: var(--color-bg-chrome);
   border-top: 1px solid var(--color-border-divider);
   display: flex;
@@ -398,72 +452,136 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100%; width: 120px;
+  height: 100%;
+  width: 120px;
   font-family: var(--ff-base);
-  font-size: 14px; font-weight: 600;
+  font-size: 14px;
+  font-weight: 600;
   letter-spacing: 2px;
   color: var(--color-text-dim);
   cursor: pointer;
   position: relative;
-  transition: color .15s;
+  transition: color 0.15s;
 }
-.bottombar__tab--right-border { border-right: 1px solid var(--color-border-divider); }
+.bottombar__tab--right-border {
+  border-right: 1px solid var(--color-border-divider);
+}
 .bottombar__tab--active {
   color: var(--color-text-primary);
   font-weight: 700;
 }
 .bottombar__tab--active::after {
-  content: '';
+  content: "";
   position: absolute;
-  bottom: 0; left: 0;
-  width: 100%; height: 2px;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
   background: var(--color-success);
 }
-.bottombar__tab:hover { color: var(--color-text-primary); }
+.bottombar__tab:hover {
+  color: var(--color-text-primary);
+}
 
 /* ══════════════════════════════════════════════
    SUBMENU POPOVER
 ══════════════════════════════════════════════ */
 .submenu-popover {
   position: absolute;
-  left: 819px; top: 48px;
+  left: 819px;
+  top: 48px;
   width: 381px;
   background: var(--color-bg-chrome);
   border: 1px solid var(--color-border-divider);
   border-top: none;
   border-radius: 0 8px 8px 8px;
-  box-shadow: 0 4px 16px rgba(0,0,0,.094), 0 1px 3px rgba(0,0,0,.071);
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.094),
+    0 1px 3px rgba(0, 0, 0, 0.071);
   display: flex;
   z-index: 100;
   overflow: hidden;
 }
-.submenu-col { display: flex; flex-direction: column; padding: 8px 0; }
-.submenu-col--1 { width: 180px; }
-.submenu-col--2 { width: 200px; }
-.submenu-divider { width: 1px; background: var(--color-border-divider); align-self: stretch; }
+.submenu-col {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 0;
+}
+.submenu-col--1 {
+  width: 180px;
+}
+.submenu-col--2 {
+  width: 200px;
+}
+.submenu-divider {
+  width: 1px;
+  background: var(--color-border-divider);
+  align-self: stretch;
+}
 .submenu-header {
-  display: flex; align-items: center; gap: 12px;
-  padding: 4px 12px 8px 12px; width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 4px 12px 8px 12px;
+  width: 100%;
 }
-.submenu-header__txt { font-size: 13px; font-weight: 600; color: var(--color-text-dim); letter-spacing: 1.5px; }
-.submenu-hd-divider { width: 100%; height: 1px; background: var(--color-border-divider); }
+.submenu-header__txt {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text-dim);
+  letter-spacing: 1.5px;
+}
+.submenu-hd-divider {
+  width: 100%;
+  height: 1px;
+  background: var(--color-border-divider);
+}
 .submenu-item {
-  display: flex; align-items: center; justify-content: space-between;
-  height: 36px; padding: 0 12px; gap: 10px;
-  border-radius: 4px; cursor: pointer;
-  transition: background .12s;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 36px;
+  padding: 0 12px;
+  gap: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.12s;
 }
-.submenu-item:hover   { background: #F5F7FF; }
-.submenu-item--active { background: #EEF2FF; }
-.submenu-item__left { display: flex; align-items: center; gap: 10px; }
-.submenu-item__txt { font-size: 13px; font-weight: 500; color: #444444; }
-.submenu-item__txt--active { font-size: 13px; font-weight: 600; color: var(--color-text-primary); }
+.submenu-item:hover {
+  background: #f5f7ff;
+}
+.submenu-item--active {
+  background: #eef2ff;
+}
+.submenu-item__left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.submenu-item__txt {
+  font-size: 13px;
+  font-weight: 500;
+  color: #444444;
+}
+.submenu-item__txt--active {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
 .submenu-badge {
-  display: flex; align-items: center; justify-content: center;
-  border-radius: 9px; background: #DBEAFE;
-  padding: 0 6px; height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9px;
+  background: #dbeafe;
+  padding: 0 6px;
+  height: 18px;
 }
-.submenu-badge__txt { font-size: 10px; font-weight: 700; color: #1D4ED8; }
+.submenu-badge__txt {
+  font-size: 10px;
+  font-weight: 700;
+  color: #1d4ed8;
+}
 
 /* ══════════════════════════════════════════════
    DARK MODE — lightboard 전용 오버라이드
@@ -478,27 +596,51 @@
       --color-bg-chrome 과 --gradient-card 토큰으로 자동 전환됨 ── */
 
 /* ── Submenu: 다크 전용 커스텀 ── */
-[data-theme="dark"] .submenu-item__txt    { color: var(--color-text-secondary); }
-[data-theme="dark"] .submenu-item--active { background: var(--color-bg-input); }
-[data-theme="dark"] .submenu-badge__txt   { color: var(--color-info); }
+[data-theme="dark"] .submenu-item__txt {
+  color: var(--color-text-secondary);
+}
+[data-theme="dark"] .submenu-item:hover {
+  background: var(--color-bg-hover);
+}
+[data-theme="dark"] .submenu-item--active {
+  background: var(--color-bg-input);
+}
+[data-theme="dark"] .submenu-badge__txt {
+  color: var(--color-info);
+}
 
 /* ── Mini card: components.css 공유, 오버라이드 불필요 ── */
 
 /* ── Unit card item: 고유 서페이스 + tertiary lbl ── */
-[data-theme="dark"] .unit-card-item        { background: var(--color-bg-unit-card); border-color: var(--color-border-card); }
-[data-theme="dark"] .unit-card-item__lbl   { color: var(--color-text-tertiary); }
-[data-theme="dark"] .unit-card-item__num   { color: var(--color-text-primary); }
+[data-theme="dark"] .unit-card-item {
+  background: var(--color-bg-unit-card);
+  border-color: var(--color-border-card);
+}
+[data-theme="dark"] .unit-card-item__lbl {
+  color: var(--color-text-tertiary);
+}
+[data-theme="dark"] .unit-card-item__num {
+  color: var(--color-text-primary);
+}
 
 /* ── Inventory / Shortcut: components.css dark 오버라이드 공유 ── */
 
 /* ── Gauge (half-donut): 다크에서 info 계열 강조 ── */
-[data-theme="dark"] .gauge__track          { stroke: var(--color-bg-input); }
-[data-theme="dark"] .gauge__fill           { stroke: var(--color-info); }
+[data-theme="dark"] .gauge__track {
+  stroke: var(--color-bg-input);
+}
+[data-theme="dark"] .gauge__fill {
+  stroke: var(--color-info);
+}
 [data-theme="dark"] .gauge__needle,
-[data-theme="dark"] .gauge__dot            { fill: var(--color-text-primary); }
+[data-theme="dark"] .gauge__dot {
+  fill: var(--color-text-primary);
+}
 
 /* ── Calendar time: success-static 토큰 사용 시 자동 전환됨 ── */
-.cal-time-sec { color: var(--color-success-static); }
+.cal-time-sec {
+  color: var(--color-success-static);
+}
 
 /* .theme-switch 다크 오버라이드는 style.css (공통) 에 있습니다 */
 /* .search-box / .filter-btn / .photo-frame / .person-card 는 lightboard 에서 미사용 —
